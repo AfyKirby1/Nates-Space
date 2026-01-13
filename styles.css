@@ -1441,7 +1441,7 @@ body::before {
 
   /* Show more top-half of images on mobile */
   .media-container img {
-    object-position: center 10%;
+    object-position: center 25%;
     /* Shift even higher up for vertical shots */
   }
 
