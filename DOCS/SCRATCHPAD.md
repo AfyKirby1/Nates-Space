@@ -23,6 +23,12 @@
 - [x] Added "Purple Hearts", "See Me Fall", "60 Second Relay", "Harsh Feelings" to Apple Music modal
 - [x] Fixed Apple Music modal scrolling on mobile (overflow-y: auto)
 - [x] Bumped asset cache version to v11
+- [x] Implemented Facebook-style image modal/lightbox
+  - [x] Two-column desktop layout (Image Left / Details Right)
+  - [x] Click logic for all post and gallery images
+  - [x] Keyboard navigation (Arrows + Esc)
+  - [x] Responsive mobile layout
+  - [x] Dynamic data population (Title, Quote, Stats)
 
 ### Known Issues
 - None currently reported

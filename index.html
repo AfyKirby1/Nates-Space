@@ -539,7 +539,121 @@
         </div>
     </div>
 
-    <script src="script.js?v=11"></script>
+    <!-- Image Lightbox Modal (Facebook-style) -->
+    <div class="image-modal-overlay" id="imageModal">
+        <div class="image-modal">
+            <!-- Close Button -->
+            <button class="image-modal-close" id="closeImageModal">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+
+            <!-- Navigation Arrows -->
+            <button class="image-modal-nav prev" id="prevImage" title="Previous">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            <button class="image-modal-nav next" id="nextImage" title="Next">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 6 15 12 9 18"></polyline>
+                </svg>
+            </button>
+
+            <!-- Main Content -->
+            <div class="image-modal-content">
+                <!-- Image Section -->
+                <div class="image-modal-image-section">
+                    <img src="" alt="" id="modalImage" class="modal-main-image">
+                </div>
+
+                <!-- Details Section -->
+                <div class="image-modal-details">
+                    <!-- Post Header -->
+                    <div class="modal-post-header">
+                        <div class="modal-author">
+                            <img src="assets/IMG_20260112_193737.jpg" alt="Nate" class="modal-author-avatar">
+                            <div class="modal-author-info">
+                                <span class="modal-author-name">Nate's Space</span>
+                                <span class="modal-timestamp" id="modalTimestamp">3 hours ago</span>
+                            </div>
+                        </div>
+                        <span class="modal-tag" id="modalTag">Photo</span>
+                    </div>
+
+                    <!-- Post Title -->
+                    <h2 class="modal-post-title" id="modalTitle">Studio Vibes Today</h2>
+
+                    <!-- Post Quote/Content -->
+                    <div class="modal-post-quote">
+                        <p id="modalQuote">The setup is looking right. Got the gear ready, got the ideas flowing. Time
+                            to create something special. 🎧</p>
+                    </div>
+
+                    <!-- View Count -->
+                    <div class="modal-views" id="modalViews">
+                        <span>👁️ 1,420 views</span>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="modal-actions">
+                        <button class="modal-action-btn" id="modalLikeBtn">
+                            <span class="action-icon">❤️</span>
+                            <span class="action-count" id="modalLikeCount">287</span>
+                        </button>
+                        <button class="modal-action-btn" id="modalCommentBtn">
+                            <span class="action-icon">💬</span>
+                            <span class="action-count" id="modalCommentCount">42</span>
+                        </button>
+                        <button class="modal-action-btn">
+                            <span class="action-icon">🔖</span>
+                            <span class="action-label">Save</span>
+                        </button>
+                        <button class="modal-action-btn">
+                            <span class="action-icon">↗️</span>
+                            <span class="action-label">Share</span>
+                        </button>
+                    </div>
+
+                    <!-- Comments Section -->
+                    <div class="modal-comments-section">
+                        <div class="modal-comment">
+                            <div class="comment-avatar"
+                                style="background: linear-gradient(135deg, hsl(200, 70%, 50%), hsl(220, 70%, 40%))">R
+                            </div>
+                            <div class="comment-body">
+                                <span class="comment-author">Ryan</span>
+                                <span class="comment-text">Fire setup bro! 🔥</span>
+                            </div>
+                        </div>
+                        <div class="modal-comment">
+                            <div class="comment-avatar"
+                                style="background: linear-gradient(135deg, hsl(25, 70%, 50%), hsl(15, 70%, 40%))">🎨
+                            </div>
+                            <div class="comment-body">
+                                <span class="comment-author">Nick the Painter</span>
+                                <span class="comment-text">The vibe is immaculate ✨</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comment Input -->
+                    <div class="modal-comment-input">
+                        <input type="text" placeholder="Write a comment..." id="modalCommentInput">
+                        <button class="send-comment-btn">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js?v=12"></script>
 </body>
 
 </html>

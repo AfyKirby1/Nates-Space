@@ -27,6 +27,12 @@ All notable changes to this project will be documented in this file.
 - Added Apple Music toggle to Mobile Player expanded view
 - Added "Purple Hearts" to Apple Music embeds
 - Fixed mobile scrolling issue in Apple Music modal
+- **Image Lightbox (Facebook-style)**:
+  - Click any image in posts or gallery to open full-screen view
+  - Split view on desktop: Large image on left, details/comments on right
+  - Mobile view: Stacked layout for easy viewing
+  - Keyboard navigation (Left/Right arrows) and Escape to close
+  - Displays post metadata (caption, timestamp, likes, comments) dynamically
 
 ### Technical
 - Pure HTML5, CSS3, JavaScript (no frameworks, no build step)

@@ -530,3 +530,176 @@ window.addEventListener('click', (e) => {
     }
 });
 
+// ===== IMAGE LIGHTBOX MODAL (Facebook-style) =====
+const imageModal = document.getElementById('imageModal');
+const closeImageModalBtn = document.getElementById('closeImageModal');
+const modalImage = document.getElementById('modalImage');
+const modalTitle = document.getElementById('modalTitle');
+const modalQuote = document.getElementById('modalQuote');
+const modalTimestamp = document.getElementById('modalTimestamp');
+const modalTag = document.getElementById('modalTag');
+const modalViews = document.getElementById('modalViews');
+const modalLikeCount = document.getElementById('modalLikeCount');
+const modalCommentCount = document.getElementById('modalCommentCount');
+const prevImageBtn = document.getElementById('prevImage');
+const nextImageBtn = document.getElementById('nextImage');
+
+// Collect all clickable images (posts + gallery)
+let allImages = [];
+let currentImageIndex = 0;
+
+function collectImages() {
+    allImages = [];
+
+    // Get images from posts
+    document.querySelectorAll('.post .media-container img').forEach(img => {
+        const post = img.closest('.post');
+        if (post) {
+            const titleEl = post.querySelector('.post-meta h2');
+            const quoteEl = post.querySelector('.post-content > p');
+            const timestampEl = post.querySelector('.timestamp');
+            const tagEl = post.querySelector('.tag');
+            const viewsEl = post.querySelector('.image-overlay span');
+            const likeBtn = post.querySelector('.action-btn:first-child');
+            const commentBtn = post.querySelector('.action-btn:nth-child(2)');
+
+            allImages.push({
+                src: img.src,
+                alt: img.alt,
+                title: titleEl ? titleEl.textContent : 'Photo',
+                quote: quoteEl ? quoteEl.textContent : '',
+                timestamp: timestampEl ? timestampEl.textContent : 'Just now',
+                tag: tagEl ? tagEl.textContent : 'Photo',
+                views: viewsEl ? viewsEl.textContent : '',
+                likes: likeBtn ? likeBtn.textContent.replace('❤️', '').trim() : '0',
+                comments: commentBtn ? commentBtn.textContent.replace('💬', '').trim() : '0'
+            });
+        }
+    });
+
+    // Get images from gallery
+    document.querySelectorAll('.gallery-panel .gallery-item img').forEach((img, index) => {
+        allImages.push({
+            src: img.src,
+            alt: img.alt,
+            title: 'Studio Gallery',
+            quote: 'Behind the scenes from the studio sessions. The creative space where the magic happens. 🎤✨',
+            timestamp: 'Gallery',
+            tag: 'Gallery',
+            views: '👁️ ' + (Math.floor(Math.random() * 1000) + 500) + ' views',
+            likes: String(Math.floor(Math.random() * 200) + 100),
+            comments: String(Math.floor(Math.random() * 50) + 10)
+        });
+    });
+}
+
+function openImageModal(index) {
+    if (index < 0 || index >= allImages.length) return;
+
+    currentImageIndex = index;
+    const imageData = allImages[index];
+
+    // Set image
+    modalImage.src = imageData.src;
+    modalImage.alt = imageData.alt;
+
+    // Set details
+    modalTitle.textContent = imageData.title;
+    modalQuote.textContent = imageData.quote;
+    modalTimestamp.textContent = imageData.timestamp;
+    modalTag.textContent = imageData.tag;
+    modalViews.innerHTML = `<span>${imageData.views || '👁️ View'}</span>`;
+    modalLikeCount.textContent = imageData.likes;
+    modalCommentCount.textContent = imageData.comments;
+
+    // Show/hide views if empty
+    modalViews.style.display = imageData.views ? 'block' : 'none';
+
+    // Update navigation buttons
+    updateNavButtons();
+
+    // Show modal
+    imageModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeImageModal() {
+    imageModal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function updateNavButtons() {
+    prevImageBtn.disabled = currentImageIndex <= 0;
+    nextImageBtn.disabled = currentImageIndex >= allImages.length - 1;
+}
+
+function showPrevImage() {
+    if (currentImageIndex > 0) {
+        currentImageIndex--;
+        openImageModal(currentImageIndex);
+    }
+}
+
+function showNextImage() {
+    if (currentImageIndex < allImages.length - 1) {
+        currentImageIndex++;
+        openImageModal(currentImageIndex);
+    }
+}
+
+// Event Listeners for Image Modal
+if (closeImageModalBtn) {
+    closeImageModalBtn.addEventListener('click', closeImageModal);
+}
+
+if (prevImageBtn) {
+    prevImageBtn.addEventListener('click', showPrevImage);
+}
+
+if (nextImageBtn) {
+    nextImageBtn.addEventListener('click', showNextImage);
+}
+
+// Close when clicking the overlay background
+imageModal.addEventListener('click', (e) => {
+    if (e.target === imageModal || e.target.classList.contains('image-modal-image-section')) {
+        closeImageModal();
+    }
+});
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+    if (!imageModal.classList.contains('active')) return;
+
+    if (e.key === 'Escape') {
+        closeImageModal();
+    } else if (e.key === 'ArrowLeft') {
+        showPrevImage();
+    } else if (e.key === 'ArrowRight') {
+        showNextImage();
+    }
+});
+
+// Add click handlers to post images
+document.querySelectorAll('.post .media-container img').forEach(img => {
+    img.addEventListener('click', () => {
+        collectImages();
+        const index = allImages.findIndex(item => item.src === img.src);
+        if (index !== -1) {
+            openImageModal(index);
+        }
+    });
+});
+
+// Add click handlers to gallery images
+document.querySelectorAll('.gallery-panel .gallery-item img').forEach(img => {
+    img.addEventListener('click', () => {
+        collectImages();
+        const index = allImages.findIndex(item => item.src === img.src);
+        if (index !== -1) {
+            openImageModal(index);
+        }
+    });
+});
+
+console.log("📸 Image lightbox initialized!");
