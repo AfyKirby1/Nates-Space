@@ -16,6 +16,7 @@
 - [x] Updated Creative Circle with new friends: Deez Nuts, Ryan, Nick the Painter
 - [x] Added new post "Off to the Engineer!"
 - [x] Converted HEIC images to JPG using heic-convert
+- [x] Added Spotify and Apple Music icons to top nav (desktop & mobile)
 
 ### Known Issues
 - None currently reported

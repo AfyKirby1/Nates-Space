@@ -21,6 +21,7 @@ All notable changes to this project will be documented in this file.
 - **Glassmorphism Design** with animated gradient background
 - **Mobile Responsive** design with simplified single-column layout
 - Cache-busting version parameters for CSS/JS files
+- Added Spotify and Apple Music icons to top nav (desktop & mobile)
 
 ### Technical
 - Pure HTML5, CSS3, JavaScript (no frameworks, no build step)
