@@ -1,44 +1,77 @@
-# Nate's Space 🎨
+# 🎤 Nate's Space
 
-A clean, modern personal portfolio site built with pure HTML, CSS, and JavaScript.
+A modern personal portfolio & social-style website. Pure HTML/CSS/JS - no frameworks, no build step!
 
-## Features
+![Version](https://img.shields.io/badge/version-1.0.0-00d4aa)
+![No Dependencies](https://img.shields.io/badge/dependencies-0-success)
 
-- ✨ Glassmorphism design with premium animations
-- 🌓 Dark/Light theme toggle
-- 📱 Fully responsive
-- 🚀 Zero dependencies - just push and deploy!
+## ✨ Features
 
-## Deploy to GitHub Pages
+- 🎨 **Glassmorphism Design** - Frosted glass panels with animated gradient background
+- 🌓 **Dark/Light Theme** - Toggle between modes, saved to localStorage
+- 📱 **Mobile Responsive** - Looks great on any device
+- �️ **Photo Gallery** - Showcase your studio shots
+- 🎥 **Video Support** - Share recording sessions
+- 👥 **Creative Circle** - Show off your connections
+- 📝 **Feed Posts** - Social-style updates with likes, comments, shares
 
-1. Create a new repo on GitHub
-2. Push this folder:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit"
-   git branch -M main
-   git remote add origin https://github.com/YOUR_USERNAME/NatesSpace.git
-   git push -u origin main
-   ```
-3. Go to repo Settings → Pages → Source: "Deploy from branch" → Branch: `main` → Save
-4. Your site will be live at `https://YOUR_USERNAME.github.io/NatesSpace/`
+## 🚀 Quick Start
 
-## Local Development
+### Local Development
+Just open `index.html` in your browser. That's it!
 
-Just open `index.html` in your browser - that's it!
-
-Or use a simple local server:
+Or use a local server:
 ```bash
 npx serve .
 ```
 
-## Structure
+### Deploy to GitHub Pages
+```bash
+git init
+git add .
+git commit -m "Initial commit"
+git remote add origin https://github.com/YOUR_USERNAME/NatesSpace.git
+git push -u origin main
+```
+
+Then go to **Settings → Pages → Source: main branch** and your site will be live!
+
+## 📁 Structure
 
 ```
 NatesSpace/
-├── index.html   # Main page
-├── styles.css   # All styles
-├── script.js    # Theme toggle & interactions
-└── README.md    # This file
+├── index.html          # Main page
+├── styles.css          # All styles
+├── script.js           # Theme & layout toggle
+├── .nojekyll           # For GitHub Pages
+├── assets/             # Images & videos
+└── DOCS/               # Documentation
+    ├── SUMMARY.md      # Project overview
+    ├── CHANGELOG.md    # Version history
+    ├── ARCHITECTURE.md # Technical docs
+    ├── SBOM.md         # Dependencies
+    └── SCRATCHPAD.md   # Dev notes
 ```
+
+## 🎨 Customization
+
+### Colors
+Edit the CSS variables in `styles.css`:
+```css
+:root {
+  --accent-color: #00d4aa;      /* Main accent */
+  --accent-secondary: #00a8cc;  /* Secondary */
+  --accent-tertiary: #7b61ff;   /* Tertiary */
+}
+```
+
+### Content
+Edit `index.html` to update:
+- Profile info & bio
+- Gallery images
+- Feed posts
+- Creative Circle friends
+
+---
+
+Made with 💜 in the studio

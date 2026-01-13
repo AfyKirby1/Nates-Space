@@ -71,4 +71,136 @@ document.querySelectorAll('.action-btn').forEach(btn => {
     });
 });
 
+// ===== MUSIC PLAYER =====
+const audioPlayer = document.getElementById('audioPlayer');
+const tracks = document.querySelectorAll('.track');
+const progressBar = document.querySelector('.progress-bar');
+const progressFill = document.querySelector('.progress-fill');
+const currentTimeEl = document.querySelector('.current-time');
+const durationEl = document.querySelector('.duration');
+const volumeSlider = document.querySelector('.volume-slider');
+const volumeIcon = document.querySelector('.volume-icon');
+
+let currentTrack = null;
+let isPlaying = false;
+
+// Set initial volume
+audioPlayer.volume = 0.8;
+
+// Format time in M:SS
+function formatTime(seconds) {
+    if (isNaN(seconds)) return '0:00';
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+}
+
+// Update progress bar
+function updateProgress() {
+    if (audioPlayer.duration) {
+        const percent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+        progressFill.style.width = percent + '%';
+        currentTimeEl.textContent = formatTime(audioPlayer.currentTime);
+    }
+}
+
+// Play a track
+function playTrack(trackElement) {
+    const src = trackElement.dataset.src;
+
+    // If clicking the same track that's playing, toggle pause
+    if (currentTrack === trackElement && isPlaying) {
+        audioPlayer.pause();
+        isPlaying = false;
+        trackElement.classList.remove('playing');
+        trackElement.querySelector('.track-play-btn').textContent = '▶';
+        return;
+    }
+
+    // Remove playing state from all tracks
+    tracks.forEach(t => {
+        t.classList.remove('playing', 'active');
+        t.querySelector('.track-play-btn').textContent = '▶';
+    });
+
+    // Set new track
+    trackElement.classList.add('active', 'playing');
+    trackElement.querySelector('.track-play-btn').textContent = '⏸';
+    currentTrack = trackElement;
+
+    // Load and play
+    audioPlayer.src = src;
+    audioPlayer.play();
+    isPlaying = true;
+}
+
+// Track click handlers
+tracks.forEach(track => {
+    track.addEventListener('click', () => playTrack(track));
+});
+
+// Audio events
+audioPlayer.addEventListener('timeupdate', updateProgress);
+
+audioPlayer.addEventListener('loadedmetadata', () => {
+    durationEl.textContent = formatTime(audioPlayer.duration);
+});
+
+audioPlayer.addEventListener('ended', () => {
+    // Play next track or stop
+    const trackArray = Array.from(tracks);
+    const currentIndex = trackArray.indexOf(currentTrack);
+    const nextIndex = (currentIndex + 1) % trackArray.length;
+
+    if (nextIndex !== 0) {
+        playTrack(trackArray[nextIndex]);
+    } else {
+        // Ended, reset
+        isPlaying = false;
+        currentTrack.classList.remove('playing');
+        currentTrack.querySelector('.track-play-btn').textContent = '▶';
+        progressFill.style.width = '0%';
+        currentTimeEl.textContent = '0:00';
+    }
+});
+
+// Click on progress bar to seek
+progressBar.addEventListener('click', (e) => {
+    const rect = progressBar.getBoundingClientRect();
+    const percent = (e.clientX - rect.left) / rect.width;
+    audioPlayer.currentTime = percent * audioPlayer.duration;
+});
+
+// Volume control
+volumeSlider.addEventListener('input', (e) => {
+    const volume = e.target.value / 100;
+    audioPlayer.volume = volume;
+    updateVolumeIcon(volume);
+});
+
+function updateVolumeIcon(volume) {
+    if (volume === 0) {
+        volumeIcon.textContent = '🔇';
+    } else if (volume < 0.5) {
+        volumeIcon.textContent = '🔉';
+    } else {
+        volumeIcon.textContent = '🔊';
+    }
+}
+
+// Mute toggle
+volumeIcon.addEventListener('click', () => {
+    if (audioPlayer.volume > 0) {
+        audioPlayer.dataset.prevVolume = audioPlayer.volume;
+        audioPlayer.volume = 0;
+        volumeSlider.value = 0;
+        updateVolumeIcon(0);
+    } else {
+        const prevVol = parseFloat(audioPlayer.dataset.prevVolume) || 0.8;
+        audioPlayer.volume = prevVol;
+        volumeSlider.value = prevVol * 100;
+        updateVolumeIcon(prevVol);
+    }
+});
+
 console.log("🎤 Nate's Space loaded successfully!");
