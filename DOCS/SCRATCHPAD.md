@@ -18,6 +18,9 @@
 - [x] Converted HEIC images to JPG using heic-convert
 - [x] Added Spotify and Apple Music icons to top nav (desktop & mobile)
 - [x] Added Apple Music toggle in music player with "Fall On Me" embed
+- [x] Updated sidebar/focus player icon to "Beamed Note"
+- [x] Added Apple Music toggle to Mobile Player expanded view
+- [x] Added "Purple Hearts" embed to Apple Music modal
 
 ### Known Issues
 - None currently reported

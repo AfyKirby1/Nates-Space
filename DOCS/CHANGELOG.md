@@ -23,6 +23,9 @@ All notable changes to this project will be documented in this file.
 - Cache-busting version parameters for CSS/JS files
 - Added Spotify and Apple Music icons to top nav (desktop & mobile)
 - Integrated Apple Music Player toggle with "Fall On Me" embed
+- Updated Apple Music icon to "Beamed Note" style
+- Added Apple Music toggle to Mobile Player expanded view
+- Added "Purple Hearts" to Apple Music embeds
 
 ### Technical
 - Pure HTML5, CSS3, JavaScript (no frameworks, no build step)
