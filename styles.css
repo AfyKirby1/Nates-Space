@@ -43,23 +43,29 @@ body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   min-height: 100vh;
+  min-height: 100dvh;
+  /* Dynamic viewport height for mobile */
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.5s ease, color 0.5s ease;
   overflow-x: hidden;
+  overscroll-behavior: none;
+  /* Prevent overscroll bounce */
 }
 
 /* Animated Background */
 body::before {
   content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: -50px;
+  /* Extend beyond viewport to prevent gaps */
+  left: -50px;
+  right: -50px;
+  bottom: -50px;
   background:
     radial-gradient(circle at 20% 80%, rgba(0, 212, 170, 0.15) 0%, transparent 50%),
     radial-gradient(circle at 80% 20%, rgba(0, 168, 204, 0.12) 0%, transparent 50%),
     radial-gradient(circle at 50% 50%, rgba(123, 97, 255, 0.08) 0%, transparent 60%);
+  background-attachment: fixed;
   pointer-events: none;
   z-index: -1;
   animation: bgPulse 15s ease-in-out infinite;
@@ -70,12 +76,10 @@ body::before {
   0%,
   100% {
     opacity: 1;
-    transform: scale(1);
   }
 
   50% {
     opacity: 0.8;
-    transform: scale(1.05);
   }
 }
 
@@ -135,7 +139,32 @@ body::before {
   display: grid;
   grid-template-columns: 320px 1fr;
   gap: 1.5rem;
+  transition: all 0.4s ease;
 }
+
+/* Layout Modes */
+.main-grid[data-layout="left"] {
+  grid-template-columns: 320px 1fr;
+}
+
+.main-grid[data-layout="right"] {
+  grid-template-columns: 1fr 320px;
+}
+
+.main-grid[data-layout="right"] .sidebar {
+  order: 2;
+}
+
+.main-grid[data-layout="focus"] {
+  grid-template-columns: 1fr;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.main-grid[data-layout="focus"] .sidebar {
+  display: none;
+}
+
 
 /* ===== Navigation ===== */
 .top-nav {
@@ -179,6 +208,31 @@ body::before {
 .nav-controls {
   display: flex;
   gap: 0.5rem;
+}
+
+.nav-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem;
+  border-radius: var(--radius-sm);
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  color: var(--accent-color);
+  background: rgba(0, 212, 170, 0.15);
+  border-color: var(--accent-color);
+  transform: scale(1.05);
+}
+
+.nav-btn .icon {
+  width: 20px;
+  height: 20px;
 }
 
 .theme-toggle {

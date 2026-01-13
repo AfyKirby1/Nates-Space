@@ -20,7 +20,15 @@
         <nav class="top-nav glass-panel">
             <div class="logo">NATE'S SPACE</div>
             <div class="nav-controls">
-                <button class="theme-toggle" id="themeToggle" title="Switch Theme">
+                <!-- Layout Toggle -->
+                <button class="nav-btn" id="layoutToggle" title="Change Layout">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="18" rx="1"></rect>
+                        <rect x="14" y="3" width="7" height="18" rx="1"></rect>
+                    </svg>
+                </button>
+                <!-- Theme Toggle -->
+                <button class="nav-btn" id="themeToggle" title="Switch Theme">
                     <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
@@ -94,15 +102,27 @@
                         <div class="friends-grid">
                             <div class="friend-item">
                                 <div class="friend-avatar"
-                                    style="background: linear-gradient(135deg, hsl(0, 70%, 50%), hsl(40, 70%, 40%))">J
+                                    style="background: linear-gradient(135deg, hsl(45, 80%, 50%), hsl(30, 70%, 40%))">🥜
                                 </div>
-                                <span>Jay</span>
+                                <span>Deez Nuts</span>
                             </div>
                             <div class="friend-item">
                                 <div class="friend-avatar"
-                                    style="background: linear-gradient(135deg, hsl(60, 70%, 50%), hsl(100, 70%, 40%))">A
+                                    style="background: linear-gradient(135deg, hsl(200, 70%, 50%), hsl(220, 70%, 40%))">
+                                    R</div>
+                                <span>Ryan</span>
+                            </div>
+                            <div class="friend-item">
+                                <div class="friend-avatar"
+                                    style="background: linear-gradient(135deg, hsl(25, 70%, 50%), hsl(15, 70%, 40%))">🎨
                                 </div>
-                                <span>Alex</span>
+                                <span>Nick</span>
+                            </div>
+                            <div class="friend-item">
+                                <div class="friend-avatar"
+                                    style="background: linear-gradient(135deg, hsl(0, 70%, 50%), hsl(40, 70%, 40%))">J
+                                </div>
+                                <span>Jay</span>
                             </div>
                             <div class="friend-item">
                                 <div class="friend-avatar"
@@ -115,18 +135,6 @@
                                     style="background: linear-gradient(135deg, hsl(180, 70%, 50%), hsl(220, 70%, 40%))">
                                     J</div>
                                 <span>Jordan</span>
-                            </div>
-                            <div class="friend-item">
-                                <div class="friend-avatar"
-                                    style="background: linear-gradient(135deg, hsl(240, 70%, 50%), hsl(280, 70%, 40%))">
-                                    R</div>
-                                <span>Riley</span>
-                            </div>
-                            <div class="friend-item">
-                                <div class="friend-avatar"
-                                    style="background: linear-gradient(135deg, hsl(300, 70%, 50%), hsl(340, 70%, 40%))">
-                                    C</div>
-                                <span>Casey</span>
                             </div>
                         </div>
                     </div>
@@ -148,6 +156,27 @@
                     </div>
 
                     <!-- Posts -->
+                    <article class="glass-panel post">
+                        <header class="post-header">
+                            <div class="post-meta">
+                                <h2>Off to the Engineer! 📤</h2>
+                                <span class="timestamp">Just now</span>
+                            </div>
+                            <span class="tag update">Update</span>
+                        </header>
+                        <div class="post-content">
+                            <p>Just sent the new track off to the engineer for mixing and mastering. Can't wait to hear
+                                how it sounds when it comes back polished! The wait is always the hardest part but it's
+                                gonna be worth it. Stay tuned fam! 🔥🎚️</p>
+                        </div>
+                        <footer class="post-footer">
+                            <button class="action-btn">❤️ 89</button>
+                            <button class="action-btn">💬 12</button>
+                            <button class="action-btn">🔖 Save</button>
+                            <button class="action-btn">↗️ Share</button>
+                        </footer>
+                    </article>
+
                     <article class="glass-panel post">
                         <header class="post-header">
                             <div class="post-meta">

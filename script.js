@@ -1,20 +1,28 @@
 // Theme Toggle
 const themeToggle = document.getElementById('themeToggle');
+const layoutToggle = document.getElementById('layoutToggle');
 const html = document.documentElement;
+const mainGrid = document.querySelector('.main-grid');
 
 // Check for saved theme preference
-const savedTheme = localStorage.getItem('theme');
+const savedTheme = localStorage.getItem('nateTheme');
 if (savedTheme) {
     html.setAttribute('data-theme', savedTheme);
     updateThemeIcon(savedTheme);
 }
 
+// Check for saved layout preference
+const savedLayout = localStorage.getItem('nateLayout') || 'left';
+mainGrid.setAttribute('data-layout', savedLayout);
+updateLayoutIcon(savedLayout);
+
+// Theme Toggle
 themeToggle.addEventListener('click', () => {
     const currentTheme = html.getAttribute('data-theme');
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
 
     html.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
+    localStorage.setItem('nateTheme', newTheme);
     updateThemeIcon(newTheme);
 });
 
@@ -28,46 +36,29 @@ function updateThemeIcon(theme) {
 }
 
 // Layout Toggle
-const layoutToggle = document.getElementById('layoutToggle');
-const layouts = ['left', 'right', 'focus'];
-const layoutIcons = {
-    left: '<rect x="3" y="3" width="7" height="18" rx="1"></rect><rect x="14" y="3" width="7" height="18" rx="1"></rect>',
-    right: '<rect x="3" y="3" width="7" height="18" rx="1"></rect><rect x="14" y="3" width="7" height="18" rx="1"></rect>',
-    focus: '<rect x="6" y="3" width="12" height="18" rx="1"></rect>'
-};
-const layoutTitles = {
-    left: 'Left Sidebar',
-    right: 'Right Sidebar',
-    focus: 'Focus Mode'
-};
-
-// Check for saved layout preference
-const savedLayout = localStorage.getItem('layout') || 'left';
-if (savedLayout && savedLayout !== 'left') {
-    html.setAttribute('data-layout', savedLayout);
-}
-updateLayoutIcon(savedLayout);
-
 layoutToggle.addEventListener('click', () => {
-    const currentLayout = html.getAttribute('data-layout') || 'left';
+    const layouts = ['left', 'right', 'focus'];
+    const currentLayout = mainGrid.getAttribute('data-layout') || 'left';
     const currentIndex = layouts.indexOf(currentLayout);
-    const nextIndex = (currentIndex + 1) % layouts.length;
-    const newLayout = layouts[nextIndex];
+    const nextLayout = layouts[(currentIndex + 1) % layouts.length];
 
-    if (newLayout === 'left') {
-        html.removeAttribute('data-layout');
-    } else {
-        html.setAttribute('data-layout', newLayout);
-    }
-    
-    localStorage.setItem('layout', newLayout);
-    updateLayoutIcon(newLayout);
+    mainGrid.setAttribute('data-layout', nextLayout);
+    localStorage.setItem('nateLayout', nextLayout);
+    updateLayoutIcon(nextLayout);
 });
 
 function updateLayoutIcon(layout) {
     const icon = layoutToggle.querySelector('.icon');
-    icon.innerHTML = layoutIcons[layout] || layoutIcons.left;
-    layoutToggle.title = `Layout: ${layoutTitles[layout]}`;
+    if (layout === 'left') {
+        // Left sidebar icon
+        icon.innerHTML = '<rect x="3" y="3" width="7" height="18" rx="1"></rect><rect x="14" y="3" width="7" height="18" rx="1"></rect>';
+    } else if (layout === 'right') {
+        // Right sidebar icon (mirrored)
+        icon.innerHTML = '<rect x="3" y="3" width="7" height="18" rx="1"></rect><rect x="14" y="3" width="7" height="18" rx="1" fill="currentColor"></rect>';
+    } else {
+        // Focus mode (single column)
+        icon.innerHTML = '<rect x="6" y="3" width="12" height="18" rx="1"></rect>';
+    }
 }
 
 // Simple like button interaction
@@ -80,5 +71,4 @@ document.querySelectorAll('.action-btn').forEach(btn => {
     });
 });
 
-console.log("🎨 Nate's Space loaded successfully!");
-
+console.log("🎤 Nate's Space loaded successfully!");
