@@ -14,6 +14,7 @@ A modern personal portfolio & social-style website. Pure HTML/CSS/JS - no framew
 - 🎥 **Video Support** - Share recording sessions
 - 👥 **Creative Circle** - Show off your connections
 - 📝 **Feed Posts** - Social-style updates with likes, comments, shares
+- 📸 **Image Lightbox** - Facebook-style image viewer with download button
 
 ## 🚀 Quick Start
 
