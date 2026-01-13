@@ -21,6 +21,8 @@
 - [x] Updated sidebar/focus player icon to "Beamed Note"
 - [x] Added Apple Music toggle to Mobile Player expanded view
 - [x] Added "Purple Hearts", "See Me Fall", "60 Second Relay", "Harsh Feelings" to Apple Music modal
+- [x] Fixed Apple Music modal scrolling on mobile (overflow-y: auto)
+- [x] Bumped asset cache version to v11
 
 ### Known Issues
 - None currently reported

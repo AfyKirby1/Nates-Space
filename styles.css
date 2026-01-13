@@ -718,6 +718,25 @@ body::before {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  overflow-y: auto;
+  max-height: 60vh;
+  -webkit-overflow-scrolling: touch;
+  padding-right: 5px;
+  /* Prevent scrollbar overlapping content */
+}
+
+/* Custom scrollbar for the embeds container */
+.apple-embeds::-webkit-scrollbar {
+  width: 6px;
+}
+
+.apple-embeds::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.apple-embeds::-webkit-scrollbar-thumb {
+  background: var(--glass-border);
+  border-radius: 3px;
 }
 
 .player-container {

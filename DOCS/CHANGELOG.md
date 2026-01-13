@@ -26,6 +26,7 @@ All notable changes to this project will be documented in this file.
 - Updated Apple Music icon to "Beamed Note" style
 - Added Apple Music toggle to Mobile Player expanded view
 - Added "Purple Hearts" to Apple Music embeds
+- Fixed mobile scrolling issue in Apple Music modal
 
 ### Technical
 - Pure HTML5, CSS3, JavaScript (no frameworks, no build step)
