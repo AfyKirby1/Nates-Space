@@ -436,5 +436,33 @@ audioPlayer.addEventListener('pause', () => {
         const btn = track.querySelector('.focus-track-btn');
         if (btn) btn.textContent = '▶';
     });
+    updateHeroPlayButton(false);
 });
+
+audioPlayer.addEventListener('play', () => {
+    updateHeroPlayButton(true);
+});
+
+// ===== HERO PLAY ALL BUTTON =====
+const heroPlayAllBtn = document.getElementById('heroPlayAllBtn');
+
+if (heroPlayAllBtn) {
+    heroPlayAllBtn.addEventListener('click', () => {
+        if (isPlaying) {
+            audioPlayer.pause();
+        } else {
+            if (currentTrack) {
+                audioPlayer.play();
+            } else if (tracks.length > 0) {
+                playTrack(tracks[0]);
+            }
+        }
+    });
+}
+
+function updateHeroPlayButton(isPlaying) {
+    if (heroPlayAllBtn) {
+        heroPlayAllBtn.textContent = isPlaying ? '⏸ Pause All' : '▶ Play All';
+    }
+}
 
