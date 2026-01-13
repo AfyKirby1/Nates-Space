@@ -379,6 +379,51 @@ body::before {
   height: 20px;
 }
 
+.nav-left-group {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-socials {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.social-link {
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.social-link svg {
+  width: 18px;
+  height: 18px;
+}
+
+.social-link.spotify:hover {
+  color: #1DB954;
+  border-color: #1DB954;
+  background: rgba(29, 185, 84, 0.1);
+}
+
+.social-link.apple:hover {
+  color: #fa243c;
+  border-color: #fa243c;
+  background: rgba(250, 36, 60, 0.1);
+}
+
+@media (max-width: 600px) {
+  .nav-left-group {
+    gap: 0.75rem;
+  }
+
+  .logo {
+    font-size: 1rem;
+  }
+}
+
 /* ===== Sidebar ===== */
 .sidebar {
   display: flex;
