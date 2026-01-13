@@ -2394,61 +2394,83 @@ body::before {
     flex-direction: column;
   }
 
+  /* Make image section take all available space */
   .image-modal-image-section {
-    flex: 0 0 auto;
-    max-height: 50vh;
-    padding: 1rem;
-    padding-top: 4rem;
+    flex: 1;
+    min-height: 0;
+    /* Crucial for flex scrolling */
+    max-height: none;
+    padding: 3.5rem 0.5rem 0.5rem;
+    /* Allow room for top controls */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
   }
 
   .modal-main-image {
-    max-height: 45vh;
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    box-shadow: none;
+    /* Reduce visual noise on mobile */
   }
 
+  /* Make details section a compact bottom sheet */
   .image-modal-details {
     width: 100%;
     height: auto;
-    flex: 1;
+    max-height: 40vh;
+    /* Cap height to 40% of screen */
+    flex: 0 0 auto;
     border-left: none;
     border-top: 1px solid var(--glass-border);
     border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-    margin-top: -20px;
+    margin-top: 0;
     position: relative;
     z-index: 5;
+    background: rgba(10, 10, 15, 0.95);
+    /* Darker background for readability */
+  }
+
+  .modal-post-header {
+    padding: 0.75rem 1rem;
   }
 
   .modal-post-title {
-    font-size: 1.15rem;
-    padding: 1rem 1rem 0.5rem;
+    font-size: 1.1rem;
+    padding: 0.75rem 1rem 0.25rem;
   }
 
   .modal-post-quote {
-    padding: 0 1rem 0.75rem;
+    padding: 0 1rem 0.5rem;
   }
 
   .modal-post-quote p {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    line-height: 1.4;
   }
 
   .modal-actions {
     padding: 0.5rem 1rem;
+    border-bottom: none;
+    /* Remove border since it's at the bottom */
   }
 
   .modal-action-btn {
-    padding: 0.5rem 0.25rem;
+    padding: 0.4rem;
   }
 
   .action-label {
     display: none;
   }
 
-  .modal-comments-section {
-    padding: 0.75rem 1rem;
-    max-height: 150px;
-  }
-
+  /* Hide comments and input on mobile to minimize UI */
+  .modal-comments-section,
   .modal-comment-input {
-    padding: 0.75rem 1rem;
+    display: none;
   }
 }
 
