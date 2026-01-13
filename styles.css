@@ -1260,12 +1260,50 @@ body::before {
 
 .video-container {
   max-height: none;
+  position: relative;
+  cursor: pointer;
 }
 
 .video-container video {
   width: 100%;
   border-radius: var(--radius-md);
   display: block;
+}
+
+.video-play-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  /* Let clicks pass through to container */
+  z-index: 2;
+}
+
+.video-container:hover .video-play-overlay {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.video-play-overlay::after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 18px solid white;
+  margin-left: 4px;
 }
 
 .image-overlay {

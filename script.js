@@ -699,14 +699,15 @@ imageModal.addEventListener('click', (e) => {
 
 // Keyboard navigation
 document.addEventListener('keydown', (e) => {
-    if (!imageModal.classList.contains('active')) return;
+    if (imageModal.classList.contains('active')) {
+        if (e.key === 'Escape') closeImageModal();
+        else if (e.key === 'ArrowLeft') showPrevImage();
+        else if (e.key === 'ArrowRight') showNextImage();
+    }
 
-    if (e.key === 'Escape') {
-        closeImageModal();
-    } else if (e.key === 'ArrowLeft') {
-        showPrevImage();
-    } else if (e.key === 'ArrowRight') {
-        showNextImage();
+    // Video Modal keys
+    if (videoModal && videoModal.classList.contains('active')) {
+        if (e.key === 'Escape') closeVideoModal();
     }
 });
 
@@ -732,4 +733,78 @@ document.querySelectorAll('.gallery-panel .gallery-item img').forEach(img => {
     });
 });
 
-console.log("📸 Image lightbox initialized!");
+// ===== VIDEO MODAL LOGIC =====
+const videoModal = document.getElementById('videoModal');
+const closeVideoModalBtn = document.getElementById('closeVideoModal');
+const modalVideo = document.getElementById('modalVideo');
+const videoModalTitle = document.getElementById('videoModalTitle');
+const videoModalQuote = document.getElementById('videoModalQuote');
+const videoModalTimestamp = document.getElementById('videoModalTimestamp');
+const videoModalLikeCount = document.getElementById('videoModalLikeCount');
+const videoModalCommentCount = document.getElementById('videoModalCommentCount');
+
+// Initialize Videos in Feed (Remove controls, add play button)
+document.querySelectorAll('.video-container video').forEach(video => {
+    video.removeAttribute('controls'); // Remove default controls
+
+    // Add custom play button overlay
+    const playOverlay = document.createElement('div');
+    playOverlay.className = 'video-play-overlay';
+    video.parentElement.appendChild(playOverlay);
+
+    // Add click listener to container
+    video.parentElement.addEventListener('click', () => {
+        openVideoModal(video);
+    });
+});
+
+function openVideoModal(sourceVideo) {
+    const post = sourceVideo.closest('.post');
+    if (!post) return;
+
+    // Get Metadata
+    const titleEl = post.querySelector('.post-meta h2');
+    const quoteEl = post.querySelector('.post-content > p');
+    const timestampEl = post.querySelector('.timestamp');
+    const likeBtn = post.querySelector('.action-btn:first-child');
+    const commentBtn = post.querySelector('.action-btn:nth-child(2)');
+    const sourceSrc = sourceVideo.querySelector('source').src;
+
+    // Set Modal Content
+    modalVideo.src = sourceSrc;
+    videoModalTitle.textContent = titleEl ? titleEl.textContent : 'Video';
+    videoModalQuote.textContent = quoteEl ? quoteEl.textContent : '';
+    videoModalTimestamp.textContent = timestampEl ? timestampEl.textContent : 'Just now';
+    videoModalLikeCount.textContent = likeBtn ? likeBtn.textContent.replace('❤️', '').trim() : '0';
+    videoModalCommentCount.textContent = commentBtn ? commentBtn.textContent.replace('💬', '').trim() : '0';
+
+    // Show Modal
+    videoModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    // Play Video
+    modalVideo.play().catch(e => console.log("Auto-play prevented:", e));
+}
+
+function closeVideoModal() {
+    videoModal.classList.remove('active');
+    document.body.style.overflow = '';
+    modalVideo.pause();
+    modalVideo.currentTime = 0;
+    modalVideo.src = ""; // Clear src to stop buffering
+}
+
+if (closeVideoModalBtn) {
+    closeVideoModalBtn.addEventListener('click', closeVideoModal);
+}
+
+// Close when clicking outside
+if (videoModal) {
+    videoModal.addEventListener('click', (e) => {
+        if (e.target === videoModal || e.target.classList.contains('image-modal-image-section')) {
+            closeVideoModal();
+        }
+    });
+}
+
+console.log("📸 Image & 🎥 Video lightboxes initialized!");
