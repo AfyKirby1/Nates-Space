@@ -541,6 +541,7 @@ const modalTag = document.getElementById('modalTag');
 const modalViews = document.getElementById('modalViews');
 const modalLikeCount = document.getElementById('modalLikeCount');
 const modalCommentCount = document.getElementById('modalCommentCount');
+const modalDownloadBtn = document.getElementById('modalDownloadBtn');
 const prevImageBtn = document.getElementById('prevImage');
 const nextImageBtn = document.getElementById('nextImage');
 
@@ -658,6 +659,35 @@ if (prevImageBtn) {
 
 if (nextImageBtn) {
     nextImageBtn.addEventListener('click', showNextImage);
+}
+
+// Download Button
+if (modalDownloadBtn) {
+    modalDownloadBtn.addEventListener('click', (e) => {
+        // Create temporary link
+        const link = document.createElement('a');
+        link.href = modalImage.src;
+
+        // Extract filename from path or generate one
+        const filename = modalImage.src.split('/').pop() || `nate-space-image-${Date.now()}.jpg`;
+        link.download = filename;
+
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        // Visual feedback
+        const originalText = modalDownloadBtn.querySelector('.action-label').textContent;
+        const originalIcon = modalDownloadBtn.querySelector('.action-icon').textContent;
+
+        modalDownloadBtn.querySelector('.action-label').textContent = 'Downloaded!';
+        modalDownloadBtn.querySelector('.action-icon').textContent = '✅';
+
+        setTimeout(() => {
+            modalDownloadBtn.querySelector('.action-label').textContent = originalText;
+            modalDownloadBtn.querySelector('.action-icon').textContent = originalIcon;
+        }, 2000);
+    });
 }
 
 // Close when clicking the overlay background
