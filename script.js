@@ -466,3 +466,37 @@ function updateHeroPlayButton(isPlaying) {
     }
 }
 
+// ===== SOCIAL MODAL =====
+const socialModal = document.getElementById('socialModal');
+const closeModalBtn = document.getElementById('closeModal');
+const followBtns = document.querySelectorAll('.follow-btn');
+
+function openModal() {
+    socialModal.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+}
+
+function closeModal() {
+    socialModal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Add click event to all follow buttons
+followBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent default button behavior
+        openModal();
+    });
+});
+
+if (closeModalBtn) {
+    closeModalBtn.addEventListener('click', closeModal);
+}
+
+// Close when clicking outside the modal content
+window.addEventListener('click', (e) => {
+    if (e.target === socialModal) {
+        closeModal();
+    }
+});
+

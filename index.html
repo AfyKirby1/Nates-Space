@@ -11,7 +11,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=8">
+    <link rel="stylesheet" href="styles.css?v=10">
 </head>
 
 <body>
@@ -67,7 +67,7 @@
                         </div>
                         <div class="hero-actions">
                             <button class="btn primary" id="heroPlayAllBtn">▶ Play All</button>
-                            <button class="btn">Follow</button>
+                            <button class="btn follow-btn">Follow</button>
                             <button class="btn">Message</button>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                             </div>
 
                             <div class="actions">
-                                <button class="btn primary">Follow</button>
+                                <button class="btn primary follow-btn">Follow</button>
                                 <button class="btn">Message</button>
                             </div>
                         </div>
@@ -141,14 +141,14 @@
                                     <button class="track-play-btn">▶</button>
                                     <div class="track-info">
                                         <span class="track-title">Awkward Moments</span>
-                                        <span class="track-artist">Nate</span>
+                                        <span class="track-artist">Natee</span>
                                     </div>
                                 </div>
                                 <div class="track" data-src="assets/music/Natee 730 PM V1 (M).m4a">
                                     <button class="track-play-btn">▶</button>
                                     <div class="track-info">
                                         <span class="track-title">7:30 PM</span>
-                                        <span class="track-artist">Nate</span>
+                                        <span class="track-artist">Natee</span>
                                     </div>
                                 </div>
                             </div>
@@ -221,7 +221,7 @@
                     <div class="glass-panel focus-music-player" id="focusMusicPlayer">
                         <div class="focus-player-header">
                             <h3>🎵 The EP</h3>
-                            <span class="album-info">2 tracks • Nate</span>
+                            <span class="album-info">2 tracks • Natee</span>
                         </div>
                         <div class="focus-player-content">
                             <div class="focus-album-art">
@@ -232,14 +232,14 @@
                                     <button class="focus-track-btn">▶</button>
                                     <div class="focus-track-info">
                                         <span class="focus-track-title">Awkward Moments</span>
-                                        <span class="focus-track-artist">Nate</span>
+                                        <span class="focus-track-artist">Natee</span>
                                     </div>
                                 </div>
                                 <div class="focus-track" data-src="assets/music/Natee 730 PM V1 (M).m4a">
                                     <button class="focus-track-btn">▶</button>
                                     <div class="focus-track-info">
                                         <span class="focus-track-title">7:30 PM</span>
-                                        <span class="focus-track-artist">Nate</span>
+                                        <span class="focus-track-artist">Natee</span>
                                     </div>
                                 </div>
                             </div>
@@ -415,7 +415,7 @@
             </div>
             <div class="expanded-info">
                 <h2 class="expanded-track-name">Select a track</h2>
-                <p class="expanded-album-name">The EP • Nate</p>
+                <p class="expanded-album-name">The EP • Natee</p>
             </div>
             <div class="expanded-progress">
                 <div class="mobile-progress-bar" id="mobileProgressBar">
@@ -450,7 +450,27 @@
         </div>
     </div>
 
-    <script src="script.js?v=8"></script>
+    <!-- Social Links Modal -->
+    <div class="modal-overlay" id="socialModal">
+        <div class="glass-panel modal-content">
+            <button class="modal-close" id="closeModal">×</button>
+            <h3>🎧 Listen to Natee</h3>
+            <div class="social-links">
+                <a href="https://music.apple.com/us/artist/natee/1810779697" target="_blank"
+                    class="social-btn apple-music">
+                    <span class="social-icon">🎵</span>
+                    <span>Apple Music</span>
+                </a>
+                <a href="https://open.spotify.com/artist/3quza30cJ2cYJm2auOIv85" target="_blank"
+                    class="social-btn spotify">
+                    <span class="social-icon">🟢</span>
+                    <span>Spotify</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js?v=10"></script>
 </body>
 
 </html>
