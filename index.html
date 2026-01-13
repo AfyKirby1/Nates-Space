@@ -1,254 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nate's Space</title>
-  <meta name="description" content="Visual artist & digital creator. Blending photography, design, and digital art.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nate's Space</title>
+    <meta name="description" content="Visual artist & digital creator. Blending photography, design, and digital art.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <div class="app-layout">
-    <!-- Navigation -->
-    <nav class="top-nav glass-panel">
-      <div class="logo">NATE'S SPACE</div>
-      <div class="nav-controls">
-        <button class="theme-toggle" id="themeToggle" title="Switch Theme">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
-        </button>
-      </div>
-    </nav>
+    <div class="app-layout">
+        <!-- Navigation -->
+        <nav class="top-nav glass-panel">
+            <div class="logo">NATE'S SPACE</div>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle" title="Switch Theme">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
 
-    <!-- Hero Section -->
-    <div class="container">
-      <section class="hero">
-        <div class="hero-background">
-          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&auto=format&fit=crop&q=80" alt="Hero background" class="hero-image">
-          <div class="hero-overlay"></div>
-          <div class="hero-pattern"></div>
+        <!-- Main Content -->
+        <div class="container">
+            <div class="main-grid">
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <!-- Profile Card -->
+                    <div class="glass-panel profile-card">
+                        <div class="profile-pic-container">
+                            <div class="profile-pic">
+                                <img src="assets/IMG_20260112_193737.jpg" alt="Nate" class="profile-image">
+                            </div>
+                            <div class="status-indicator"></div>
+                        </div>
+
+                        <div class="profile-info">
+                            <h1>Nate's Space</h1>
+                            <p class="mood">Mood: 🎤 Recording</p>
+
+                            <div class="stats">
+                                <span>📍 The Studio</span>
+                                <span>👥 2.8k Followers</span>
+                            </div>
+
+                            <div class="actions">
+                                <button class="btn primary">Follow</button>
+                                <button class="btn">Message</button>
+                            </div>
+                        </div>
+
+                        <div class="about-section">
+                            <h3>About Me</h3>
+                            <p>Artist & creator. Making music and capturing the creative process. Always in the studio
+                                cooking up something new.</p>
+                            <div class="skills-tags">
+                                <span class="skill-tag">🎤 Music</span>
+                                <span class="skill-tag">🎵 Production</span>
+                            </div>
+                            <a href="#" class="website-link">🔗 natesspace.com</a>
+                        </div>
+                    </div>
+
+                    <!-- Gallery -->
+                    <div class="glass-panel gallery-panel">
+                        <h3>Studio Gallery</h3>
+                        <div class="gallery-grid">
+                            <div class="gallery-item">
+                                <img src="assets/IMG_20260112_193737.jpg" alt="Studio selfie">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="assets/IMG_20260112_194122.jpg" alt="Studio shot 1">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="assets/IMG_20260112_194124.jpg" alt="Studio shot 2">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="assets/IMG_20260112_194126.jpg" alt="Studio shot 3">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Friends/Connections -->
+                    <div class="glass-panel friends-panel">
+                        <h3>Creative Circle</h3>
+                        <div class="friends-grid">
+                            <div class="friend-item">
+                                <div class="friend-avatar"
+                                    style="background: linear-gradient(135deg, hsl(0, 70%, 50%), hsl(40, 70%, 40%))">J
+                                </div>
+                                <span>Jay</span>
+                            </div>
+                            <div class="friend-item">
+                                <div class="friend-avatar"
+                                    style="background: linear-gradient(135deg, hsl(60, 70%, 50%), hsl(100, 70%, 40%))">A
+                                </div>
+                                <span>Alex</span>
+                            </div>
+                            <div class="friend-item">
+                                <div class="friend-avatar"
+                                    style="background: linear-gradient(135deg, hsl(120, 70%, 50%), hsl(160, 70%, 40%))">
+                                    S</div>
+                                <span>Sam</span>
+                            </div>
+                            <div class="friend-item">
+                                <div class="friend-avatar"
+                                    style="background: linear-gradient(135deg, hsl(180, 70%, 50%), hsl(220, 70%, 40%))">
+                                    J</div>
+                                <span>Jordan</span>
+                            </div>
+                            <div class="friend-item">
+                                <div class="friend-avatar"
+                                    style="background: linear-gradient(135deg, hsl(240, 70%, 50%), hsl(280, 70%, 40%))">
+                                    R</div>
+                                <span>Riley</span>
+                            </div>
+                            <div class="friend-item">
+                                <div class="friend-avatar"
+                                    style="background: linear-gradient(135deg, hsl(300, 70%, 50%), hsl(340, 70%, 40%))">
+                                    C</div>
+                                <span>Casey</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Main Feed -->
+                <main class="content-area">
+                    <!-- Post Composer -->
+                    <div class="glass-panel composer">
+                        <textarea placeholder="Share what you're creating..."></textarea>
+                        <div class="composer-actions">
+                            <div class="composer-tools">
+                                <button class="tool-btn" title="Add Image">🖼️</button>
+                                <button class="tool-btn" title="Add Link">🔗</button>
+                                <button class="tool-btn" title="Add Poll">📊</button>
+                            </div>
+                            <button class="btn primary">Share</button>
+                        </div>
+                    </div>
+
+                    <!-- Posts -->
+                    <article class="glass-panel post">
+                        <header class="post-header">
+                            <div class="post-meta">
+                                <h2>Recording Session 🔥</h2>
+                                <span class="timestamp">Just now</span>
+                            </div>
+                            <span class="tag video">Video</span>
+                        </header>
+                        <div class="post-content">
+                            <p>In the studio laying down some new tracks. The energy is unmatched right now. Can't wait
+                                for y'all to hear this one! 🎤🔊</p>
+                            <div class="media-container video-container">
+                                <video controls poster="assets/IMG_20260112_194122.jpg">
+                                    <source src="assets/VID_20260112_193751.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                        <footer class="post-footer">
+                            <button class="action-btn">❤️ 342</button>
+                            <button class="action-btn">💬 56</button>
+                            <button class="action-btn">🔖 Save</button>
+                            <button class="action-btn">↗️ Share</button>
+                        </footer>
+                    </article>
+
+                    <article class="glass-panel post">
+                        <header class="post-header">
+                            <div class="post-meta">
+                                <h2>Studio Vibes Today</h2>
+                                <span class="timestamp">3 hours ago</span>
+                            </div>
+                            <span class="tag photo">Photo</span>
+                        </header>
+                        <div class="post-content">
+                            <p>The setup is looking right. Got the gear ready, got the ideas flowing. Time to create
+                                something special. 🎧</p>
+                            <div class="media-container">
+                                <img src="assets/IMG_20260112_194124.jpg" alt="Studio setup">
+                                <div class="image-overlay">
+                                    <span>👁️ 1,420 views</span>
+                                </div>
+                            </div>
+                        </div>
+                        <footer class="post-footer">
+                            <button class="action-btn">❤️ 287</button>
+                            <button class="action-btn">💬 42</button>
+                            <button class="action-btn">🔖 Save</button>
+                            <button class="action-btn">↗️ Share</button>
+                        </footer>
+                    </article>
+
+                    <article class="glass-panel post">
+                        <header class="post-header">
+                            <div class="post-meta">
+                                <h2>Late Night Session</h2>
+                                <span class="timestamp">Yesterday</span>
+                            </div>
+                            <span class="tag update">Update</span>
+                        </header>
+                        <div class="post-content">
+                            <p>When the creative block finally breaks and the ideas start flowing... there's no better
+                                feeling. Been in here for 6 hours straight. No complaints. 💯</p>
+                        </div>
+                        <footer class="post-footer">
+                            <button class="action-btn">❤️ 156</button>
+                            <button class="action-btn">💬 28</button>
+                            <button class="action-btn">🔖 Save</button>
+                            <button class="action-btn">↗️ Share</button>
+                        </footer>
+                    </article>
+
+                    <article class="glass-panel post">
+                        <header class="post-header">
+                            <div class="post-meta">
+                                <h2>Behind the Scenes</h2>
+                                <span class="timestamp">2 days ago</span>
+                            </div>
+                            <span class="tag photo">Photo</span>
+                        </header>
+                        <div class="post-content">
+                            <p>The real magic happens when nobody's watching. Just me, the mic, and the vision. Let's
+                                get it. 🔥</p>
+                            <div class="media-container">
+                                <img src="assets/IMG_20260112_194126.jpg" alt="Behind the scenes">
+                                <div class="image-overlay">
+                                    <span>👁️ 2,100 views</span>
+                                </div>
+                            </div>
+                        </div>
+                        <footer class="post-footer">
+                            <button class="action-btn">❤️ 445</button>
+                            <button class="action-btn">💬 67</button>
+                            <button class="action-btn">🔖 Save</button>
+                            <button class="action-btn">↗️ Share</button>
+                        </footer>
+                    </article>
+                </main>
+            </div>
         </div>
-        
-        <div class="hero-content">
-          <div class="hero-avatar">
-            <div class="avatar-glow"></div>
-            <div class="avatar-inner">N</div>
-          </div>
-          
-          <div class="hero-text">
-            <h1 class="hero-title">Nate's Space</h1>
-            <p class="hero-subtitle">Visual Artist • Designer • Brooklyn, NY</p>
-            <p class="hero-description">
-              Creating at the intersection of digital art and photography. 
-              Turning ideas into visual experiences.
-            </p>
-            
-            <div class="hero-stats">
-              <div class="stat">
-                <span class="stat-number">2.8K</span>
-                <span class="stat-label">Followers</span>
-              </div>
-              <div class="stat">
-                <span class="stat-number">156</span>
-                <span class="stat-label">Artworks</span>
-              </div>
-              <div class="stat">
-                <span class="stat-number">42K</span>
-                <span class="stat-label">Views</span>
-              </div>
-            </div>
-
-            <div class="hero-actions">
-              <button class="btn-hero primary">
-                👁️ View Portfolio
-              </button>
-              <button class="btn-hero">
-                🖼️ Gallery
-              </button>
-              <button class="btn-hero">
-                ↗️ Share
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Gallery Grid -->
-      <section class="gallery-section">
-        <div class="section-header">
-          <h2>Featured Work</h2>
-          <div class="filter-buttons">
-            <button class="filter-btn active">All</button>
-            <button class="filter-btn">Digital Art</button>
-            <button class="filter-btn">Photography</button>
-          </div>
-        </div>
-        
-        <div class="gallery-grid">
-          <div class="gallery-item featured">
-            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=60" alt="Electric Dreams">
-            <div class="gallery-overlay">
-              <h3>Electric Dreams</h3>
-              <div class="gallery-stats">
-                <span>❤️ 287</span>
-                <span>👁️ 1.4K</span>
-              </div>
-            </div>
-          </div>
-          <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=600&auto=format&fit=crop&q=60" alt="Urban Glow">
-            <div class="gallery-overlay">
-              <h3>Urban Glow</h3>
-              <div class="gallery-stats">
-                <span>❤️ 445</span>
-                <span>👁️ 2.1K</span>
-              </div>
-            </div>
-          </div>
-          <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&auto=format&fit=crop&q=60" alt="Neon Reflections">
-            <div class="gallery-overlay">
-              <h3>Neon Reflections</h3>
-              <div class="gallery-stats">
-                <span>❤️ 312</span>
-                <span>👁️ 1.6K</span>
-              </div>
-            </div>
-          </div>
-          <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1634017839464-5c339bbe3c35?w=600&auto=format&fit=crop&q=60" alt="Abstract Flow">
-            <div class="gallery-overlay">
-              <h3>Abstract Flow</h3>
-              <div class="gallery-stats">
-                <span>❤️ 198</span>
-                <span>👁️ 890</span>
-              </div>
-            </div>
-          </div>
-          <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=600&auto=format&fit=crop&q=60" alt="City Lights">
-            <div class="gallery-overlay">
-              <h3>City Lights</h3>
-              <div class="gallery-stats">
-                <span>❤️ 523</span>
-                <span>👁️ 2.4K</span>
-              </div>
-            </div>
-          </div>
-          <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=600&auto=format&fit=crop&q=60" alt="Digital Waves">
-            <div class="gallery-overlay">
-              <h3>Digital Waves</h3>
-              <div class="gallery-stats">
-                <span>❤️ 167</span>
-                <span>👁️ 780</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Feed Section -->
-      <section class="feed-section">
-        <h2 class="section-title">Latest Updates</h2>
-        
-        <div class="feed-grid">
-          <!-- Post Composer -->
-          <div class="glass-panel composer">
-            <textarea placeholder="Share what you're creating..."></textarea>
-            <div class="composer-actions">
-              <div class="composer-tools">
-                <button class="tool-btn" title="Add Image">🖼️</button>
-                <button class="tool-btn" title="Add Link">🔗</button>
-                <button class="tool-btn" title="Add Poll">📊</button>
-              </div>
-              <button class="btn primary">Share</button>
-            </div>
-          </div>
-
-          <!-- Posts -->
-          <article class="glass-panel post">
-            <header class="post-header">
-              <div class="post-meta">
-                <h2>New Digital Piece: "Electric Dreams"</h2>
-                <span class="timestamp">3 hours ago</span>
-              </div>
-              <span class="tag art">New Art</span>
-            </header>
-            <div class="post-content">
-              <p>Finally finished this one after weeks of work. Inspired by cyberpunk aesthetics and neon cityscapes. What do you think?</p>
-              <div class="media-container">
-                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=60" alt="Electric Dreams artwork">
-                <div class="image-overlay">
-                  <span>👁️ 1,420 views</span>
-                </div>
-              </div>
-            </div>
-            <footer class="post-footer">
-              <button class="action-btn">❤️ 287</button>
-              <button class="action-btn">💬 42</button>
-              <button class="action-btn">🔖 Save</button>
-              <button class="action-btn">↗️ Share</button>
-            </footer>
-          </article>
-
-          <article class="glass-panel post">
-            <header class="post-header">
-              <div class="post-meta">
-                <h2>Studio Session Today</h2>
-                <span class="timestamp">Yesterday</span>
-              </div>
-              <span class="tag update">Update</span>
-            </header>
-            <div class="post-content">
-              <p>Working on some new concepts. The creative block is finally breaking. Got some exciting collabs in the works that I can't wait to share with y'all.</p>
-            </div>
-            <footer class="post-footer">
-              <button class="action-btn">❤️ 156</button>
-              <button class="action-btn">💬 28</button>
-              <button class="action-btn">🔖 Save</button>
-              <button class="action-btn">↗️ Share</button>
-            </footer>
-          </article>
-
-          <article class="glass-panel post">
-            <header class="post-header">
-              <div class="post-meta">
-                <h2>Golden Hour in Brooklyn</h2>
-                <span class="timestamp">2 days ago</span>
-              </div>
-              <span class="tag photo">Photo</span>
-            </header>
-            <div class="post-content">
-              <p>Sometimes you just gotta stop and capture the moment. Shot on iPhone, edited in Lightroom.</p>
-              <div class="media-container">
-                <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800&auto=format&fit=crop&q=60" alt="Golden Hour in Brooklyn">
-                <div class="image-overlay">
-                  <span>👁️ 2,100 views</span>
-                </div>
-              </div>
-            </div>
-            <footer class="post-footer">
-              <button class="action-btn">❤️ 445</button>
-              <button class="action-btn">💬 67</button>
-              <button class="action-btn">🔖 Save</button>
-              <button class="action-btn">↗️ Share</button>
-            </footer>
-          </article>
-        </div>
-      </section>
     </div>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-      <p>© 2026 Nate's Space • Built with 💜</p>
-    </footer>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
