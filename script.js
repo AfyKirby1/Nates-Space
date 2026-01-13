@@ -36,6 +36,8 @@ function updateThemeIcon(theme) {
 }
 
 // Layout Toggle
+const heroSection = document.querySelector('.hero-section');
+
 layoutToggle.addEventListener('click', () => {
     const layouts = ['left', 'right', 'focus'];
     const currentLayout = mainGrid.getAttribute('data-layout') || 'left';
@@ -45,9 +47,11 @@ layoutToggle.addEventListener('click', () => {
     mainGrid.setAttribute('data-layout', nextLayout);
     localStorage.setItem('nateLayout', nextLayout);
     updateLayoutIcon(nextLayout);
+    updateHeroVisibility(nextLayout);
 });
 
 function updateLayoutIcon(layout) {
+    if (!layoutToggle) return;
     const icon = layoutToggle.querySelector('.icon');
     if (layout === 'left') {
         // Left sidebar icon
@@ -60,6 +64,15 @@ function updateLayoutIcon(layout) {
         icon.innerHTML = '<rect x="6" y="3" width="12" height="18" rx="1"></rect>';
     }
 }
+
+function updateHeroVisibility(layout) {
+    if (heroSection) {
+        heroSection.style.display = layout === 'focus' ? 'block' : 'none';
+    }
+}
+
+// Set initial hero visibility
+updateHeroVisibility(savedLayout);
 
 // Simple like button interaction
 document.querySelectorAll('.action-btn').forEach(btn => {
@@ -203,4 +216,151 @@ volumeIcon.addEventListener('click', () => {
     }
 });
 
+// ===== MOBILE PLAYER =====
+const mobilePlayer = document.getElementById('mobilePlayer');
+const mobilePlayerBar = document.getElementById('mobilePlayerBar');
+const mobilePlayerExpanded = document.getElementById('mobilePlayerExpanded');
+const mobilePlayBtn = document.getElementById('mobilePlayBtn');
+const expandedPlayBtn = document.getElementById('expandedPlayBtn');
+const collapseBtn = document.getElementById('collapseBtn');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const mobileProgressBar = document.getElementById('mobileProgressBar');
+const mobileProgressFill = document.getElementById('mobileProgressFill');
+const mobileTrackItems = document.querySelectorAll('.mobile-track-item');
+
+const trackSources = [
+    'assets/music/Akward Moments Natee V2 (M).mp3',
+    'assets/music/Natee 730 PM V1 (M).m4a'
+];
+
+const trackNames = ['Awkward Moments', '7:30 PM'];
+
+// Expand player when tapping the bar (not the play button)
+mobilePlayerBar.addEventListener('click', (e) => {
+    if (!e.target.closest('.mobile-play-btn')) {
+        mobilePlayerExpanded.classList.add('active');
+    }
+});
+
+// Collapse player
+collapseBtn.addEventListener('click', () => {
+    mobilePlayerExpanded.classList.remove('active');
+});
+
+// Mobile play button
+mobilePlayBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMobilePlay();
+});
+
+expandedPlayBtn.addEventListener('click', () => {
+    toggleMobilePlay();
+});
+
+function toggleMobilePlay() {
+    if (!currentTrack && tracks.length > 0) {
+        // Play first track if none selected
+        playTrack(tracks[0]);
+    } else if (isPlaying) {
+        audioPlayer.pause();
+        isPlaying = false;
+        updateMobilePlayButtons('▶');
+        if (currentTrack) {
+            currentTrack.classList.remove('playing');
+            currentTrack.querySelector('.track-play-btn').textContent = '▶';
+        }
+    } else {
+        audioPlayer.play();
+        isPlaying = true;
+        updateMobilePlayButtons('⏸');
+        if (currentTrack) {
+            currentTrack.classList.add('playing');
+            currentTrack.querySelector('.track-play-btn').textContent = '⏸';
+        }
+    }
+}
+
+function updateMobilePlayButtons(symbol) {
+    mobilePlayBtn.textContent = symbol;
+    expandedPlayBtn.textContent = symbol;
+}
+
+// Update mobile player UI when track changes
+function updateMobilePlayerUI(trackName) {
+    document.querySelector('.mobile-track-name').textContent = trackName;
+    document.querySelector('.expanded-track-name').textContent = trackName;
+
+    // Update mobile tracklist active state
+    const trackIndex = trackNames.indexOf(trackName);
+    mobileTrackItems.forEach((item, i) => {
+        item.classList.toggle('active', i === trackIndex);
+    });
+}
+
+// Sync progress with mobile player
+audioPlayer.addEventListener('timeupdate', () => {
+    if (audioPlayer.duration) {
+        const percent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+        mobileProgressFill.style.width = percent + '%';
+        document.querySelector('.mobile-current-time').textContent = formatTime(audioPlayer.currentTime);
+    }
+});
+
+audioPlayer.addEventListener('loadedmetadata', () => {
+    document.querySelector('.mobile-duration').textContent = formatTime(audioPlayer.duration);
+});
+
+// Mobile progress bar seek
+mobileProgressBar.addEventListener('click', (e) => {
+    const rect = mobileProgressBar.getBoundingClientRect();
+    const percent = (e.clientX - rect.left) / rect.width;
+    audioPlayer.currentTime = percent * audioPlayer.duration;
+});
+
+// Prev/Next buttons
+prevBtn.addEventListener('click', () => {
+    const trackArray = Array.from(tracks);
+    const currentIndex = trackArray.indexOf(currentTrack);
+    const prevIndex = currentIndex > 0 ? currentIndex - 1 : trackArray.length - 1;
+    playTrack(trackArray[prevIndex]);
+});
+
+nextBtn.addEventListener('click', () => {
+    const trackArray = Array.from(tracks);
+    const currentIndex = trackArray.indexOf(currentTrack);
+    const nextIndex = (currentIndex + 1) % trackArray.length;
+    playTrack(trackArray[nextIndex]);
+});
+
+// Mobile track list click
+mobileTrackItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
+        if (tracks[index]) {
+            playTrack(tracks[index]);
+        }
+    });
+});
+
+// Override playTrack to also update mobile UI
+const originalPlayTrack = playTrack;
+playTrack = function (trackElement) {
+    originalPlayTrack(trackElement);
+    const trackIndex = Array.from(tracks).indexOf(trackElement);
+    if (trackIndex >= 0) {
+        updateMobilePlayerUI(trackNames[trackIndex]);
+        updateMobilePlayButtons('⏸');
+    }
+};
+
+// Sync play state when audio ends
+audioPlayer.addEventListener('play', () => {
+    updateMobilePlayButtons('⏸');
+});
+
+audioPlayer.addEventListener('pause', () => {
+    updateMobilePlayButtons('▶');
+});
+
 console.log("🎤 Nate's Space loaded successfully!");
+

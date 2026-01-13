@@ -11,7 +11,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=4">
+    <link rel="stylesheet" href="styles.css?v=5">
 </head>
 
 <body>
@@ -38,6 +38,42 @@
 
         <!-- Main Content -->
         <div class="container">
+            <!-- Hero Section (Focus/Modern Mode) -->
+            <section class="hero-section">
+                <div class="hero-bg">
+                    <img src="assets/IMG_20260112_194124.jpg" alt="Studio" class="hero-bg-image">
+                    <div class="hero-overlay"></div>
+                </div>
+                <div class="hero-content">
+                    <div class="hero-avatar">
+                        <img src="assets/IMG_20260112_193737.jpg" alt="Nate">
+                    </div>
+                    <div class="hero-info">
+                        <h1 class="hero-title">Nate's Space</h1>
+                        <p class="hero-subtitle">🎤 Artist & Producer • Brooklyn, NY</p>
+                        <div class="hero-stats">
+                            <div class="hero-stat">
+                                <span class="stat-value">2.8K</span>
+                                <span class="stat-label">Followers</span>
+                            </div>
+                            <div class="hero-stat">
+                                <span class="stat-value">12</span>
+                                <span class="stat-label">Tracks</span>
+                            </div>
+                            <div class="hero-stat">
+                                <span class="stat-value">48K</span>
+                                <span class="stat-label">Plays</span>
+                            </div>
+                        </div>
+                        <div class="hero-actions">
+                            <button class="btn primary">▶ Play All</button>
+                            <button class="btn">Follow</button>
+                            <button class="btn">Message</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <div class="main-grid">
                 <!-- Sidebar -->
                 <aside class="sidebar">
@@ -318,7 +354,65 @@
         </div>
     </div>
 
-    <script src="script.js?v=4"></script>
+    <!-- Mobile Bottom Player (Spotify-style) -->
+    <div class="mobile-player" id="mobilePlayer">
+        <div class="mobile-player-bar" id="mobilePlayerBar">
+            <div class="mobile-player-info">
+                <img src="assets/IMG_20260112_193737.jpg" alt="Album art" class="mobile-album-art">
+                <div class="mobile-track-details">
+                    <span class="mobile-track-name">Select a track</span>
+                    <span class="mobile-album-name">The EP</span>
+                </div>
+            </div>
+            <button class="mobile-play-btn" id="mobilePlayBtn">▶</button>
+        </div>
+        <div class="mobile-player-expanded" id="mobilePlayerExpanded">
+            <div class="expanded-header">
+                <button class="collapse-btn" id="collapseBtn">▼</button>
+                <span>Now Playing</span>
+                <span></span>
+            </div>
+            <div class="expanded-artwork">
+                <img src="assets/IMG_20260112_193737.jpg" alt="Album art">
+            </div>
+            <div class="expanded-info">
+                <h2 class="expanded-track-name">Select a track</h2>
+                <p class="expanded-album-name">The EP • Nate</p>
+            </div>
+            <div class="expanded-progress">
+                <div class="mobile-progress-bar" id="mobileProgressBar">
+                    <div class="mobile-progress-fill" id="mobileProgressFill"></div>
+                </div>
+                <div class="mobile-time-display">
+                    <span class="mobile-current-time">0:00</span>
+                    <span class="mobile-duration">0:00</span>
+                </div>
+            </div>
+            <div class="expanded-controls">
+                <button class="control-btn" id="prevBtn">⏮</button>
+                <button class="control-btn play-pause" id="expandedPlayBtn">▶</button>
+                <button class="control-btn" id="nextBtn">⏭</button>
+            </div>
+            <div class="expanded-tracklist">
+                <div class="mobile-track-item" data-index="0">
+                    <span class="track-num">1</span>
+                    <div class="track-info">
+                        <span class="track-title">Awkward Moments</span>
+                        <span class="track-duration">3:24</span>
+                    </div>
+                </div>
+                <div class="mobile-track-item" data-index="1">
+                    <span class="track-num">2</span>
+                    <div class="track-info">
+                        <span class="track-title">7:30 PM</span>
+                        <span class="track-duration">2:48</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js?v=5"></script>
 </body>
 
 </html>
