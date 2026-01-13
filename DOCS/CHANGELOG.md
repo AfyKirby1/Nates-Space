@@ -22,6 +22,7 @@ All notable changes to this project will be documented in this file.
 - **Mobile Responsive** design with simplified single-column layout
 - Cache-busting version parameters for CSS/JS files
 - Added Spotify and Apple Music icons to top nav (desktop & mobile)
+- Integrated Apple Music Player toggle with "Fall On Me" embed
 
 ### Technical
 - Pure HTML5, CSS3, JavaScript (no frameworks, no build step)

@@ -152,7 +152,17 @@
 
                     <!-- Music Player -->
                     <div class="glass-panel music-player">
-                        <h3>🎵 The EP</h3>
+                        <div class="player-header-row">
+                            <h3>🎵 The EP</h3>
+                            <button class="icon-btn apple-toggle" id="appleMusicToggle" title="Open Apple Music">
+                                <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5S9.51 7.5 12 7.5s4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5zm0-5.5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z" />
+                                    <path
+                                        d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
+                                </svg>
+                            </button>
+                        </div>
                         <div class="player-container">
                             <div class="track-list">
                                 <div class="track active" data-src="assets/music/Akward Moments Natee V2 (M).mp3">
@@ -484,6 +494,20 @@
                     <span class="social-icon">🟢</span>
                     <span>Spotify</span>
                 </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Apple Music Modal -->
+    <div class="modal-overlay" id="appleMusicModal">
+        <div class="glass-panel modal-content large-modal">
+            <button class="modal-close" id="closeAppleModal">×</button>
+            <h3>🍎 Apple Music</h3>
+            <div class="apple-embeds">
+                <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0"
+                    height="175" style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;"
+                    sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+                    src="https://embed.music.apple.com/us/song/fall-on-me/1864786134"></iframe>
             </div>
         </div>
     </div>

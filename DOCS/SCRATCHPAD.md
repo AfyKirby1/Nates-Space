@@ -17,6 +17,7 @@
 - [x] Added new post "Off to the Engineer!"
 - [x] Converted HEIC images to JPG using heic-convert
 - [x] Added Spotify and Apple Music icons to top nav (desktop & mobile)
+- [x] Added Apple Music toggle in music player with "Fall On Me" embed
 
 ### Known Issues
 - None currently reported

@@ -500,3 +500,33 @@ window.addEventListener('click', (e) => {
     }
 });
 
+// ===== APPLE MUSIC MODAL =====
+const appleMusicModal = document.getElementById('appleMusicModal');
+const closeAppleModalBtn = document.getElementById('closeAppleModal');
+const appleMusicToggle = document.getElementById('appleMusicToggle');
+
+function openAppleModal() {
+    appleMusicModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeAppleModal() {
+    appleMusicModal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+if (appleMusicToggle) {
+    appleMusicToggle.addEventListener('click', openAppleModal);
+}
+
+if (closeAppleModalBtn) {
+    closeAppleModalBtn.addEventListener('click', closeAppleModal);
+}
+
+// Close when clicking outside
+window.addEventListener('click', (e) => {
+    if (e.target === appleMusicModal) {
+        closeAppleModal();
+    }
+});
+
