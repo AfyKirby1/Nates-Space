@@ -11,7 +11,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=5">
+    <link rel="stylesheet" href="styles.css?v=6">
 </head>
 
 <body>
@@ -217,6 +217,44 @@
 
                 <!-- Main Feed -->
                 <main class="content-area">
+                    <!-- Focus Mode Music Player (appears only in focus mode) -->
+                    <div class="glass-panel focus-music-player" id="focusMusicPlayer">
+                        <div class="focus-player-header">
+                            <h3>🎵 The EP</h3>
+                            <span class="album-info">2 tracks • Nate</span>
+                        </div>
+                        <div class="focus-player-content">
+                            <div class="focus-album-art">
+                                <img src="assets/IMG_20260112_193737.jpg" alt="Album Art">
+                            </div>
+                            <div class="focus-tracks">
+                                <div class="focus-track" data-src="assets/music/Akward Moments Natee V2 (M).mp3">
+                                    <button class="focus-track-btn">▶</button>
+                                    <div class="focus-track-info">
+                                        <span class="focus-track-title">Awkward Moments</span>
+                                        <span class="focus-track-artist">Nate</span>
+                                    </div>
+                                </div>
+                                <div class="focus-track" data-src="assets/music/Natee 730 PM V1 (M).m4a">
+                                    <button class="focus-track-btn">▶</button>
+                                    <div class="focus-track-info">
+                                        <span class="focus-track-title">7:30 PM</span>
+                                        <span class="focus-track-artist">Nate</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="focus-player-controls">
+                            <div class="focus-progress-bar">
+                                <div class="focus-progress-fill"></div>
+                            </div>
+                            <div class="focus-time-display">
+                                <span class="focus-current-time">0:00</span>
+                                <span class="focus-duration">0:00</span>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Post Composer -->
                     <div class="glass-panel composer">
                         <textarea placeholder="Share what you're creating..."></textarea>
@@ -412,7 +450,7 @@
         </div>
     </div>
 
-    <script src="script.js?v=5"></script>
+    <script src="script.js?v=6"></script>
 </body>
 
 </html>

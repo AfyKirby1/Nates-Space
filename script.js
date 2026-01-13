@@ -69,8 +69,14 @@ function updateHeroVisibility(layout) {
     if (heroSection) {
         heroSection.style.display = layout === 'focus' ? 'block' : 'none';
     }
+    // Also toggle focus music player visibility
+    const focusMusicPlayer = document.getElementById('focusMusicPlayer');
+    if (focusMusicPlayer) {
+        focusMusicPlayer.classList.toggle('visible', layout === 'focus');
+    }
 }
 
+// Set initial hero visibility
 // Set initial hero visibility
 updateHeroVisibility(savedLayout);
 
@@ -363,4 +369,72 @@ audioPlayer.addEventListener('pause', () => {
 });
 
 console.log("🎤 Nate's Space loaded successfully!");
+
+// ===== FOCUS MODE MUSIC PLAYER =====
+const focusTracks = document.querySelectorAll('.focus-track');
+const focusProgressBar = document.querySelector('.focus-progress-bar');
+const focusProgressFill = document.querySelector('.focus-progress-fill');
+const focusCurrentTimeEl = document.querySelector('.focus-current-time');
+const focusDurationEl = document.querySelector('.focus-duration');
+
+// Focus track click handlers
+focusTracks.forEach((focusTrack, index) => {
+    focusTrack.addEventListener('click', () => {
+        // Get the corresponding sidebar track and play it
+        const sidebarTracks = document.querySelectorAll('.track');
+        if (sidebarTracks[index]) {
+            playTrack(sidebarTracks[index]);
+            // Update focus track UI
+            updateFocusPlayerUI(index);
+        }
+    });
+});
+
+function updateFocusPlayerUI(activeIndex) {
+    focusTracks.forEach((track, i) => {
+        track.classList.toggle('active', i === activeIndex);
+        track.classList.toggle('playing', i === activeIndex && isPlaying);
+        const btn = track.querySelector('.focus-track-btn');
+        if (btn) btn.textContent = (i === activeIndex && isPlaying) ? '⏸' : '▶';
+    });
+}
+
+// Sync focus player progress by hooking into the existing timeupdate event
+audioPlayer.addEventListener('timeupdate', () => {
+    if (audioPlayer.duration && focusProgressFill && focusCurrentTimeEl) {
+        const percent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+        focusProgressFill.style.width = percent + '%';
+        focusCurrentTimeEl.textContent = formatTime(audioPlayer.currentTime);
+    }
+});
+
+// Update focus player duration
+audioPlayer.addEventListener('loadedmetadata', () => {
+    if (focusDurationEl) {
+        focusDurationEl.textContent = formatTime(audioPlayer.duration);
+    }
+});
+
+// Focus progress bar seek
+if (focusProgressBar) {
+    focusProgressBar.addEventListener('click', (e) => {
+        const rect = focusProgressBar.getBoundingClientRect();
+        const percent = (e.clientX - rect.left) / rect.width;
+        audioPlayer.currentTime = percent * audioPlayer.duration;
+    });
+}
+
+// Update focus player when track changes
+audioPlayer.addEventListener('play', () => {
+    const trackIndex = Array.from(document.querySelectorAll('.track')).indexOf(currentTrack);
+    if (trackIndex >= 0) updateFocusPlayerUI(trackIndex);
+});
+
+audioPlayer.addEventListener('pause', () => {
+    focusTracks.forEach(track => {
+        track.classList.remove('playing');
+        const btn = track.querySelector('.focus-track-btn');
+        if (btn) btn.textContent = '▶';
+    });
+});
 
