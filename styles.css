@@ -1268,13 +1268,15 @@ body::before {
     padding: 1.25rem;
   }
 
-  .profile-pic-container {
-    width: 110px;
-    height: 110px;
+  /* Hide duplicate profile info on mobile since we have the hero */
+  .profile-pic-container,
+  .profile-info {
+    display: none;
   }
 
-  .profile-info h1 {
-    font-size: 1.25rem;
+  .about-section {
+    border-top: none;
+    padding-top: 0;
   }
 
   .stats {
