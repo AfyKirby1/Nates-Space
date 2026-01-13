@@ -503,7 +503,7 @@ window.addEventListener('click', (e) => {
 // ===== APPLE MUSIC MODAL =====
 const appleMusicModal = document.getElementById('appleMusicModal');
 const closeAppleModalBtn = document.getElementById('closeAppleModal');
-const appleMusicToggle = document.getElementById('appleMusicToggle');
+const appleMusicToggles = document.querySelectorAll('.apple-toggle');
 
 function openAppleModal() {
     appleMusicModal.classList.add('active');
@@ -515,9 +515,9 @@ function closeAppleModal() {
     document.body.style.overflow = '';
 }
 
-if (appleMusicToggle) {
-    appleMusicToggle.addEventListener('click', openAppleModal);
-}
+appleMusicToggles.forEach(btn => {
+    btn.addEventListener('click', openAppleModal);
+});
 
 if (closeAppleModalBtn) {
     closeAppleModalBtn.addEventListener('click', closeAppleModal);
