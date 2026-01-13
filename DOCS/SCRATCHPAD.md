@@ -20,7 +20,7 @@
 - [x] Added Apple Music toggle in music player with "Fall On Me" embed
 - [x] Updated sidebar/focus player icon to "Beamed Note"
 - [x] Added Apple Music toggle to Mobile Player expanded view
-- [x] Added "Purple Hearts" embed to Apple Music modal
+- [x] Added "Purple Hearts", "See Me Fall", "60 Second Relay", "Harsh Feelings" to Apple Music modal
 
 ### Known Issues
 - None currently reported
