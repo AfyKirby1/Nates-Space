@@ -1439,10 +1439,9 @@ body::before {
     transform: translate(-50%, -50%) !important;
   }
 
-  /* Show more top-half of images on mobile */
+  /* Show center of images on mobile */
   .media-container img {
-    object-position: center 25%;
-    /* Shift even higher up for vertical shots */
+    object-position: center 50% !important;
   }
 
   .hero-stat .stat-value {
