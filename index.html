@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nate's Space</title>
+    <meta name="description" content="Visual artist & digital creator. Blending photography, design, and digital art.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app-layout">
+        <!-- Navigation -->
+        <nav class="top-nav glass-panel">
+            <div class="logo">NATE'S SPACE</div>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle" title="Switch Theme">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="container">
+            <div class="main-grid">
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <!-- Profile Card -->
+                    <div class="glass-panel profile-card">
+                        <div class="profile-pic-container">
+                            <div class="profile-pic">
+                                <div class="avatar">N</div>
+                            </div>
+                            <div class="status-indicator"></div>
+                        </div>
+
+                        <div class="profile-info">
+                            <h1>Nate's Space</h1>
+                            <p class="mood">Mood: 🎨 Creating</p>
+
+                            <div class="stats">
+                                <span>📍 Brooklyn</span>
+                                <span>👥 2.8k Followers</span>
+                            </div>
+
+                            <div class="actions">
+                                <button class="btn primary">Follow</button>
+                                <button class="btn">Message</button>
+                            </div>
+                        </div>
+
+                        <div class="about-section">
+                            <h3>About Me</h3>
+                            <p>Visual artist & digital creator. Blending photography, design, and digital art. Always
+                                chasing the next creative high.</p>
+                            <div class="skills-tags">
+                                <span class="skill-tag">🎨 Design</span>
+                                <span class="skill-tag">📷 Photo</span>
+                            </div>
+                            <a href="#" class="website-link">🔗 natesspace.art</a>
+                        </div>
+                    </div>
+
+                    <!-- Friends/Connections -->
+                    <div class="glass-panel friends-panel">
+                        <h3>Creative Circle</h3>
+                        <div class="friends-grid">
+                            <div class="friend-item">
+                                <div class="friend-avatar"
+                                    style="background: linear-gradient(135deg, hsl(0, 70%, 50%), hsl(40, 70%, 40%))">J
+                                </div>
+                                <span>Jay</span>
+                            </div>
+                            <div class="friend-item">
+                                <div class="friend-avatar"
+                                    style="background: linear-gradient(135deg, hsl(60, 70%, 50%), hsl(100, 70%, 40%))">A
+                                </div>
+                                <span>Alex</span>
+                            </div>
+                            <div class="friend-item">
+                                <div class="friend-avatar"
+                                    style="background: linear-gradient(135deg, hsl(120, 70%, 50%), hsl(160, 70%, 40%))">
+                                    S</div>
+                                <span>Sam</span>
+                            </div>
+                            <div class="friend-item">
+                                <div class="friend-avatar"
+                                    style="background: linear-gradient(135deg, hsl(180, 70%, 50%), hsl(220, 70%, 40%))">
+                                    J</div>
+                                <span>Jordan</span>
+                            </div>
+                            <div class="friend-item">
+                                <div class="friend-avatar"
+                                    style="background: linear-gradient(135deg, hsl(240, 70%, 50%), hsl(280, 70%, 40%))">
+                                    R</div>
+                                <span>Riley</span>
+                            </div>
+                            <div class="friend-item">
+                                <div class="friend-avatar"
+                                    style="background: linear-gradient(135deg, hsl(300, 70%, 50%), hsl(340, 70%, 40%))">
+                                    C</div>
+                                <span>Casey</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Main Feed -->
+                <main class="content-area">
+                    <!-- Post Composer -->
+                    <div class="glass-panel composer">
+                        <textarea placeholder="Share what you're creating..."></textarea>
+                        <div class="composer-actions">
+                            <div class="composer-tools">
+                                <button class="tool-btn" title="Add Image">🖼️</button>
+                                <button class="tool-btn" title="Add Link">🔗</button>
+                                <button class="tool-btn" title="Add Poll">📊</button>
+                            </div>
+                            <button class="btn primary">Share</button>
+                        </div>
+                    </div>
+
+                    <!-- Posts -->
+                    <article class="glass-panel post">
+                        <header class="post-header">
+                            <div class="post-meta">
+                                <h2>New Digital Piece: "Electric Dreams"</h2>
+                                <span class="timestamp">3 hours ago</span>
+                            </div>
+                            <span class="tag art">New Art</span>
+                        </header>
+                        <div class="post-content">
+                            <p>Finally finished this one after weeks of work. Inspired by cyberpunk aesthetics and neon
+                                cityscapes. What do you think?</p>
+                            <div class="media-container">
+                                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=60"
+                                    alt="Electric Dreams artwork">
+                                <div class="image-overlay">
+                                    <span>👁️ 1,420 views</span>
+                                </div>
+                            </div>
+                        </div>
+                        <footer class="post-footer">
+                            <button class="action-btn">❤️ 287</button>
+                            <button class="action-btn">💬 42</button>
+                            <button class="action-btn">🔖 Save</button>
+                            <button class="action-btn">↗️ Share</button>
+                        </footer>
+                    </article>
+
+                    <article class="glass-panel post">
+                        <header class="post-header">
+                            <div class="post-meta">
+                                <h2>Studio Session Today</h2>
+                                <span class="timestamp">Yesterday</span>
+                            </div>
+                            <span class="tag update">Update</span>
+                        </header>
+                        <div class="post-content">
+                            <p>Working on some new concepts. The creative block is finally breaking. Got some exciting
+                                collabs in the works that I can't wait to share with y'all.</p>
+                        </div>
+                        <footer class="post-footer">
+                            <button class="action-btn">❤️ 156</button>
+                            <button class="action-btn">💬 28</button>
+                            <button class="action-btn">🔖 Save</button>
+                            <button class="action-btn">↗️ Share</button>
+                        </footer>
+                    </article>
+
+                    <article class="glass-panel post">
+                        <header class="post-header">
+                            <div class="post-meta">
+                                <h2>Golden Hour in Brooklyn</h2>
+                                <span class="timestamp">2 days ago</span>
+                            </div>
+                            <span class="tag photo">Photo</span>
+                        </header>
+                        <div class="post-content">
+                            <p>Sometimes you just gotta stop and capture the moment. Shot on iPhone, edited in
+                                Lightroom.</p>
+                            <div class="media-container">
+                                <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800&auto=format&fit=crop&q=60"
+                                    alt="Golden Hour in Brooklyn">
+                                <div class="image-overlay">
+                                    <span>👁️ 2,100 views</span>
+                                </div>
+                            </div>
+                        </div>
+                        <footer class="post-footer">
+                            <button class="action-btn">❤️ 445</button>
+                            <button class="action-btn">💬 67</button>
+                            <button class="action-btn">🔖 Save</button>
+                            <button class="action-btn">↗️ Share</button>
+                        </footer>
+                    </article>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
