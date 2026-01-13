@@ -734,8 +734,24 @@ body::before {
 
 /* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 900px) {
-  .main-grid {
-    grid-template-columns: 1fr;
+
+  /* Hide layout toggle on tablet/mobile - not useful */
+  #layoutToggle {
+    display: none;
+  }
+
+  /* Force single column layout */
+  .main-grid,
+  .main-grid[data-layout="left"],
+  .main-grid[data-layout="right"],
+  .main-grid[data-layout="focus"] {
+    grid-template-columns: 1fr !important;
+    max-width: none !important;
+  }
+
+  /* Show sidebar on mobile (overrides focus mode) */
+  .main-grid[data-layout="focus"] .sidebar {
+    display: flex !important;
   }
 
   .sidebar {
