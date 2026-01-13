@@ -27,6 +27,49 @@ function updateThemeIcon(theme) {
     }
 }
 
+// Layout Toggle
+const layoutToggle = document.getElementById('layoutToggle');
+const layouts = ['left', 'right', 'focus'];
+const layoutIcons = {
+    left: '<rect x="3" y="3" width="7" height="18" rx="1"></rect><rect x="14" y="3" width="7" height="18" rx="1"></rect>',
+    right: '<rect x="3" y="3" width="7" height="18" rx="1"></rect><rect x="14" y="3" width="7" height="18" rx="1"></rect>',
+    focus: '<rect x="6" y="3" width="12" height="18" rx="1"></rect>'
+};
+const layoutTitles = {
+    left: 'Left Sidebar',
+    right: 'Right Sidebar',
+    focus: 'Focus Mode'
+};
+
+// Check for saved layout preference
+const savedLayout = localStorage.getItem('layout') || 'left';
+if (savedLayout && savedLayout !== 'left') {
+    html.setAttribute('data-layout', savedLayout);
+}
+updateLayoutIcon(savedLayout);
+
+layoutToggle.addEventListener('click', () => {
+    const currentLayout = html.getAttribute('data-layout') || 'left';
+    const currentIndex = layouts.indexOf(currentLayout);
+    const nextIndex = (currentIndex + 1) % layouts.length;
+    const newLayout = layouts[nextIndex];
+
+    if (newLayout === 'left') {
+        html.removeAttribute('data-layout');
+    } else {
+        html.setAttribute('data-layout', newLayout);
+    }
+    
+    localStorage.setItem('layout', newLayout);
+    updateLayoutIcon(newLayout);
+});
+
+function updateLayoutIcon(layout) {
+    const icon = layoutToggle.querySelector('.icon');
+    icon.innerHTML = layoutIcons[layout] || layoutIcons.left;
+    layoutToggle.title = `Layout: ${layoutTitles[layout]}`;
+}
+
 // Simple like button interaction
 document.querySelectorAll('.action-btn').forEach(btn => {
     btn.addEventListener('click', function () {
@@ -38,3 +81,4 @@ document.querySelectorAll('.action-btn').forEach(btn => {
 });
 
 console.log("🎨 Nate's Space loaded successfully!");
+
