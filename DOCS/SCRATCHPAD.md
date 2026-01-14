@@ -30,6 +30,10 @@
 - [x] **Post Preview Enhancements**: Adjusted `object-position` to `center 35%` on mobile to show the best parts of tracks/photos.
 - [x] **Content Update**: Added "Dark Spaces" (WAV) to the EP player (Sidebar, Focus, and Mobile).
 - [x] **Cache Control**: Bumped asset versions to `v=100` to ensure mobile refreshes correctly.
+- [x] **Git Housekeeping**:
+  - [x] Cleared large files (`*.exe`, `*.wav`) from commit history to fix push errors.
+  - [x] Added `.gitignore` rules for large binary files.
+  - [x] Successfully pushed pending changes to main.
 
 ### Immediate Tasks 🛠️
 - [ ] Implement Hero Redesign.

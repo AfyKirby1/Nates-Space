@@ -97,11 +97,7 @@ function initVideoPost(article) {
 }
 
 // Render immediately
-if (typeof NatesData !== 'undefined') {
-    renderPosts();
-} else {
-    console.warn("NatesData not found. Using static HTML fallback.");
-}
+// Initial Render moved to end of file to ensure observers are ready
 
 // Check for saved theme preference
 const savedTheme = localStorage.getItem('nateTheme');
@@ -1061,3 +1057,10 @@ document.addEventListener('click', (e) => {
         });
     }
 });
+
+// ===== INITIALIZE CONTENT =====
+if (typeof NatesData !== 'undefined') {
+    renderPosts();
+} else {
+    console.warn("NatesData not found. Using static HTML fallback.");
+}
