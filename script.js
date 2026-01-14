@@ -4,6 +4,105 @@ const layoutToggle = document.getElementById('layoutToggle');
 const html = document.documentElement;
 const mainGrid = document.querySelector('.main-grid');
 
+// ===== RENDER CONTENT FROM DATA =====
+const contentArea = document.querySelector('.content-area');
+
+function renderPosts() {
+    // Keep the focus music player and composer
+    const focusPlayerContext = document.getElementById('focusMusicPlayer');
+    const composerContext = document.querySelector('.composer');
+
+    // Clear everything else (existing static posts)
+    // We need to be careful not to remove the top elements if we just append
+    // Strategy: Remove all article.post elements first
+    document.querySelectorAll('article.post').forEach(el => el.remove());
+
+    const posts = NatesData.posts;
+
+    posts.forEach(post => {
+        const article = document.createElement('article');
+        article.className = 'glass-panel post scroll-reveal'; // Add scroll-reveal class immediately
+
+        let mediaHtml = '';
+        if (post.media) {
+            if (post.media.type === 'video') {
+                mediaHtml = `
+                    <div class="media-container video-container">
+                        <video poster="${post.media.poster}">
+                            <source src="${post.media.src}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>`;
+            } else if (post.media.type === 'image') {
+                mediaHtml = `
+                    <div class="media-container">
+                        <img src="${post.media.src}" alt="${post.media.alt}">
+                        <div class="image-overlay">
+                            <span>👁️ ${Math.floor(Math.random() * 2000) + 500} views</span>
+                        </div>
+                    </div>`;
+            }
+        }
+
+        let tagClass = post.type === 'video' ? 'video' : (post.type === 'photo' ? 'photo' : 'update');
+        let tagLabel = post.type.charAt(0).toUpperCase() + post.type.slice(1);
+
+        article.innerHTML = `
+            <header class="post-header">
+                <div class="post-meta">
+                    <h2>${post.title}</h2>
+                    <span class="timestamp">${post.timestamp}</span>
+                </div>
+                <span class="tag ${tagClass}">${tagLabel}</span>
+            </header>
+            <div class="post-content">
+                <p>${post.content}</p>
+                ${mediaHtml}
+            </div>
+            <footer class="post-footer">
+                <button class="action-btn">❤️ ${post.stats.likes}</button>
+                <button class="action-btn">💬 ${post.stats.comments}</button>
+                <button class="action-btn">🔖 Save</button>
+                <button class="action-btn">↗️ Share</button>
+            </footer>
+        `;
+
+        contentArea.appendChild(article);
+
+        // If it's a video, re-initialize the play button
+        if (post.media && post.media.type === 'video') {
+            initVideoPost(article);
+        }
+    });
+
+    // Re-observe for scroll reveal
+    const newPosts = document.querySelectorAll('.post');
+    if (typeof revealObserver !== 'undefined') {
+        newPosts.forEach(el => revealObserver.observe(el));
+    }
+}
+
+function initVideoPost(article) {
+    const video = article.querySelector('video');
+    if (!video) return;
+
+    video.removeAttribute('controls');
+    const playOverlay = document.createElement('div');
+    playOverlay.className = 'video-play-overlay';
+    video.parentElement.appendChild(playOverlay);
+
+    video.parentElement.addEventListener('click', () => {
+        openVideoModal(video);
+    });
+}
+
+// Render immediately
+if (typeof NatesData !== 'undefined') {
+    renderPosts();
+} else {
+    console.warn("NatesData not found. Using static HTML fallback.");
+}
+
 // Check for saved theme preference
 const savedTheme = localStorage.getItem('nateTheme');
 if (savedTheme) {
@@ -237,10 +336,11 @@ const mobileTrackItems = document.querySelectorAll('.mobile-track-item');
 
 const trackSources = [
     'assets/music/Akward Moments Natee V2 (M).mp3',
-    'assets/music/Natee 730 PM V1 (M).m4a'
+    'assets/music/Natee 730 PM V1 (M).m4a',
+    'assets/music/Dark Spaces Natee  V2.m4a'
 ];
 
-const trackNames = ['Awkward Moments', '7:30 PM'];
+const trackNames = ['Awkward Moments', '7:30 PM', 'Dark Spaces'];
 
 // Expand player when tapping the bar (not the play button)
 mobilePlayerBar.addEventListener('click', (e) => {
@@ -369,6 +469,105 @@ audioPlayer.addEventListener('pause', () => {
 });
 
 console.log("🎤 Nate's Space loaded successfully!");
+
+// ===== PARTICLE BACKGROUND =====
+const canvas = document.getElementById('particleCanvas');
+const ctx = canvas.getContext('2d');
+
+let particlesArray;
+let animationId;
+
+// Resize canvas
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+class Particle {
+    constructor(x, y, directionX, directionY, size, color) {
+        this.x = x;
+        this.y = y;
+        this.directionX = directionX;
+        this.directionY = directionY;
+        this.size = size;
+        this.color = color;
+        this.opacity = Math.random() * 0.5 + 0.1;
+    }
+    draw() {
+        ctx.save();
+        ctx.globalAlpha = this.opacity;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+        ctx.restore();
+    }
+    update() {
+        if (this.x > canvas.width || this.x < 0) {
+            this.directionX = -this.directionX;
+        }
+        if (this.y > canvas.height || this.y < 0) {
+            this.directionY = -this.directionY;
+        }
+        this.x += this.directionX;
+        this.y += this.directionY;
+        this.draw();
+    }
+}
+
+function initParticles() {
+    particlesArray = [];
+    let numberOfParticles = (canvas.width * canvas.height) / 15000;
+    for (let i = 0; i < numberOfParticles; i++) {
+        let size = (Math.random() * 2) + 0.5;
+        let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
+        let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+        let directionX = (Math.random() * 0.4) - 0.2;
+        let directionY = (Math.random() * 0.4) - 0.2;
+        let color = '#00d4aa'; // Accent color
+
+        particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+    }
+}
+
+function animateParticles() {
+    requestAnimationFrame(animateParticles);
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+
+    for (let i = 0; i < particlesArray.length; i++) {
+        particlesArray[i].update();
+    }
+}
+
+window.addEventListener('resize', () => {
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+    initParticles();
+});
+
+initParticles();
+animateParticles();
+
+
+// ===== SCROLL REVEAL =====
+const revealElements = document.querySelectorAll('.post, .gallery-panel, .friends-panel');
+
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target); // Reveal only once
+        }
+    });
+}, {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
+});
+
+// Add class and observe existing elements
+revealElements.forEach(el => {
+    el.classList.add('scroll-reveal');
+    revealObserver.observe(el);
+});
+
 
 // ===== FOCUS MODE MUSIC PLAYER =====
 const focusTracks = document.querySelectorAll('.focus-track');
@@ -734,20 +933,9 @@ const videoModalTimestamp = document.getElementById('videoModalTimestamp');
 const videoModalLikeCount = document.getElementById('videoModalLikeCount');
 const videoModalCommentCount = document.getElementById('videoModalCommentCount');
 
-// Initialize Videos in Feed (Remove controls, add play button)
-document.querySelectorAll('.video-container video').forEach(video => {
-    video.removeAttribute('controls'); // Remove default controls
-
-    // Add custom play button overlay
-    const playOverlay = document.createElement('div');
-    playOverlay.className = 'video-play-overlay';
-    video.parentElement.appendChild(playOverlay);
-
-    // Add click listener to container
-    video.parentElement.addEventListener('click', () => {
-        openVideoModal(video);
-    });
-});
+// Video Init is now handled by renderPosts()
+// But we might need re-init if static HTML exists (for fallback)
+// Leaving fallback logic if strictly needed, but better to rely on renderPosts for consistency.
 
 function openVideoModal(sourceVideo) {
     const post = sourceVideo.closest('.post');
@@ -796,6 +984,35 @@ if (videoModal) {
             closeVideoModal();
         }
     });
+}
+
+// ===== SWIPE GESTURES FOR LIGHTBOX =====
+let touchStartX = 0;
+let touchEndX = 0;
+const minSwipeDistance = 50;
+
+if (imageModal) {
+    imageModal.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    imageModal.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, { passive: true });
+}
+
+function handleSwipe() {
+    const distance = touchEndX - touchStartX;
+    if (Math.abs(distance) > minSwipeDistance) {
+        if (distance > 0) {
+            // Right Swipe -> Previous
+            showPrevImage();
+        } else {
+            // Left Swipe -> Next
+            showNextImage();
+        }
+    }
 }
 
 console.log("📸 Image & 🎥 Video lightboxes initialized!");

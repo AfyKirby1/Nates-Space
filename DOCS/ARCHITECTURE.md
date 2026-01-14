@@ -9,18 +9,17 @@ Nate's Space is a static personal portfolio/social-style website built with vani
 NatesSpace/
 ├── index.html          # Main HTML file - all markup
 ├── styles.css          # All styles including themes and responsive
-├── script.js           # Theme toggle, layout toggle, interactions
+├── script.js           # Interactions (Theming, Layouts, Lightbox, Audio)
 ├── .nojekyll           # Prevents Jekyll processing on GitHub Pages
+├── convert.js          # (Dev) HEIC to JPG conversion script
 ├── README.md           # Quick start guide
-├── DOCS/               # Documentation
-│   ├── ARCHITECTURE.md # This file
-│   ├── CHANGELOG.md    # Version history
-│   ├── SBOM.md         # Dependencies (none!)
-│   ├── SCRATCHPAD.md   # Active development notes
-│   └── SUMMARY.md      # Project overview
-└── assets/             # Media files
-    ├── IMG_*.jpg       # Studio photos
-    └── VID_*.mp4       # Video content
+└── DOCS/               # Documentation
+    ├── ARCHITECTURE.md # This file
+    ├── CHANGELOG.md    # Version history
+    ├── SBOM.md         # Assets and Security BOM
+    ├── SCRATCHPAD.md   # Active development notes
+    ├── SUMMARY.md      # Project status tracking
+    └── My_Thoughts.md  # Internal developer log
 ```
 
 ## Design System
@@ -39,27 +38,27 @@ NatesSpace/
 - **Logo/Mono**: Space Mono (Google Fonts)
 
 ### Components
-1. **Glass Panel** - Frosted glass effect with blur, used for all cards
-2. **Profile Card** - Avatar, bio, stats, actions
-3. **Gallery Grid** - 2x2 image grid with hover zoom
-4. **Friends Grid** - 3x3 avatar grid
-5. **Post Card** - Header, content, media, footer actions
-6. **Composer** - Textarea with tool buttons
-7. **Nav Bar** - Sticky top with logo and toggle buttons
+1. **Glass Panel** - Frosted glass effect with blur, used for all containers.
+2. **Profile Card/Hero** - Desktop uses a sidebar card; Mobile uses a top hero section with background image.
+3. **Gallery Grid** - Interactive image grid with lightbox triggers.
+4. **Friends Grid (Creative Circle)** - Bubble-style avatars with hover effects.
+5. **Post Card** - Multi-type posts (Photo, Video, Update) with glassmorphism styling.
+6. **Image Lightbox (Facebook-style)**:
+   - Shared modal for all images.
+   - Desktop: Two-column split (Image / Social Data).
+   - Mobile: Vertical stack (Image / Bottom Sheet metadata).
+7. **Music Player**:
+   - Desktop: Sidebar mini-player + Apple Music Modal.
+   - Mobile: Persistent bottom bar (Spotify-style) with expanded tracklist view.
 
-### Layout Modes (Desktop)
-1. **Left** - Sidebar left, feed right (default)
-2. **Right** - Feed left, sidebar right
-3. **Focus** - Feed only, no sidebar
-
-### Breakpoints
-- `≤900px` - Single column, hide layout toggle
-- `≤600px` - Reduced padding/sizes
-- `≤380px` - Stacked buttons for tiny screens
+### Layout & Logic
+- **Layout Toggles**: Desktop supports swapping sidebars or entering "Focus" mode (centered feed).
+- **Responsive Logic**: Media queries handle the transition from a 2-column desktop layout to a 1-column mobile stack. Mobile hides the layout toggle as it's not applicable.
+- **Cache Busting**: Manual version numbers in `index.html` (e.g., `?v=100`) ensure CSS/JS updates propagate immediately.
 
 ## Deployment
-1. Push to GitHub
-2. Enable GitHub Pages (main branch, root folder)
-3. Site live at `https://username.github.io/NatesSpace/`
+1. Push to GitHub.
+2. Enable GitHub Pages (main branch, root folder).
+3. Site live at `https://[username].github.io/NatesSpace/`.
 
 No build required. Just `git push`.

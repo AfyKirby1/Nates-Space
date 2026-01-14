@@ -1,0 +1,102 @@
+// Nate's Space Data Source
+
+const NatesData = {
+    images: [
+        {
+            id: 'img1',
+            src: 'assets/IMG_20260112_193737.jpg',
+            alt: 'Nate Profile',
+            title: "Nate's Space",
+            quote: "Mood: 🎤 Recording",
+            timestamp: "Profile",
+            tag: "Profile",
+            likes: "420",
+            comments: "69"
+        },
+        {
+            id: 'img2',
+            src: 'assets/IMG_20260112_194122.jpg',
+            alt: 'Studio shot 1',
+            title: 'Studio Vibes Today',
+            quote: 'The setup is looking right. Got the gear ready, got the ideas flowing. Time to create something special. 🎧',
+            timestamp: '3 hours ago',
+            tag: 'Photo',
+            likes: '287',
+            comments: '42'
+        },
+        {
+            id: 'img3',
+            src: 'assets/IMG_20260112_194124.jpg',
+            alt: 'Studio shot 2',
+            title: 'Late Night Session',
+            quote: "When the creative block finally breaks and the ideas start flowing... there's no better feeling. Been in here for 6 hours straight. No complaints. 💯",
+            timestamp: 'Yesterday',
+            tag: 'Photo',
+            likes: '156',
+            comments: '28'
+        },
+        {
+            id: 'img4',
+            src: 'assets/IMG_20260112_194126.jpg',
+            alt: 'Studio shot 3',
+            title: 'Behind the Scenes',
+            quote: "The real magic happens when nobody's watching. Just me, the mic, and the vision. Let's get it. 🔥",
+            timestamp: '2 days ago',
+            tag: 'Photo',
+            likes: '445',
+            comments: '67'
+        }
+    ],
+    posts: [
+        {
+            type: 'video',
+            title: 'Recording Session 🔥',
+            timestamp: 'Just now',
+            content: "In the studio laying down some new tracks. The energy is unmatched right now. Can't wait for y'all to hear this one! 🎤🔊",
+            media: {
+                type: 'video',
+                src: 'assets/VID_20260112_193751.mp4',
+                poster: 'assets/IMG_20260112_194122.jpg'
+            },
+            stats: { likes: 342, comments: 56 }
+        },
+        {
+            type: 'update',
+            title: 'Off to the Engineer! 📤',
+            timestamp: 'Just now',
+            content: "Just sent the new track off to the engineer for mixing and mastering. Can't wait to hear how it sounds when it comes back polished! The wait is always the hardest part but it's gonna be worth it. Stay tuned fam! 🔥🎚️",
+            stats: { likes: 89, comments: 12 }
+        },
+        {
+            type: 'photo',
+            title: 'Studio Vibes Today',
+            timestamp: '3 hours ago',
+            content: "The setup is looking right. Got the gear ready, got the ideas flowing. Time to create something special. 🎧",
+            media: {
+                type: 'image',
+                src: 'assets/IMG_20260112_194124.jpg',
+                alt: 'Studio setup'
+            },
+            stats: { likes: 287, comments: 42 }
+        },
+        {
+            type: 'update',
+            title: 'Late Night Session',
+            timestamp: 'Yesterday',
+            content: "When the creative block finally breaks and the ideas start flowing... there's no better feeling. Been in here for 6 hours straight. No complaints. 💯",
+            stats: { likes: 156, comments: 28 }
+        },
+        {
+            type: 'photo',
+            title: 'Behind the Scenes',
+            timestamp: '2 days ago',
+            content: "The real magic happens when nobody's watching. Just me, the mic, and the vision. Let's get it. 🔥",
+            media: {
+                type: 'image',
+                src: 'assets/IMG_20260112_194126.jpg',
+                alt: 'Behind the scenes'
+            },
+            stats: { likes: 445, comments: 67 }
+        }
+    ]
+};

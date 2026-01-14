@@ -1,78 +1,56 @@
 # 🎤 Nate's Space
 
-A modern personal portfolio & social-style website. Pure HTML/CSS/JS - no frameworks, no build step!
+A premium personal portal and social-style portfolio. Built with pure HTML5, CSS3, and Vanilla JavaScript—no frameworks, no build steps, just pure performance.
 
-![Version](https://img.shields.io/badge/version-1.0.0-00d4aa)
+![Version](https://img.shields.io/badge/version-1.1.0-00d4aa)
 ![No Dependencies](https://img.shields.io/badge/dependencies-0-success)
 
-## ✨ Features
+## ✨ Latest Features
 
-- 🎨 **Glassmorphism Design** - Frosted glass panels with animated gradient background
-- 🌓 **Dark/Light Theme** - Toggle between modes, saved to localStorage
-- 📱 **Mobile Responsive** - Looks great on any device
-- �️ **Photo Gallery** - Showcase your studio shots
-- 🎥 **Video Support** - Share recording sessions
-- 👥 **Creative Circle** - Show off your connections
-- 📝 **Feed Posts** - Social-style updates with likes, comments, shares
-- 📸 **Image Lightbox** - Facebook-style image viewer with download button
+- 🎨 **Glassmorphism Design** - High-end frosted glass panels with animated gradient backgrounds.
+- 🌓 **Dynamic Theming** - Seamless Dark/Light mode toggle with `localStorage` persistence.
+- 📱 **Mobile Optimized** - Tailored experience for small screens, including smaller UI elements and better image positioning.
+- 📸 **Premium Lightbox** - Full-screen image/video viewer with social metadata, navigation, and download support.
+- 🎵 **Audio Engine** - Integrated music players (Sidebar, Mobile Bar, Focus Mode) with Apple Music & Spotify links.
+- 📐 **Layout Engine** - Swap sidebars or enter "Focus Mode" for an immersive content experience.
 
 ## 🚀 Quick Start
 
 ### Local Development
-Just open `index.html` in your browser. That's it!
+Simply open `index.html` in any modern browser. No build process required!
 
-Or use a local server:
+For a better development experience, use a local server:
 ```bash
 npx serve .
+# or
+python -m http.server
 ```
 
-### Deploy to GitHub Pages
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-git remote add origin https://github.com/YOUR_USERNAME/NatesSpace.git
-git push -u origin main
-```
+### Deploying to GitHub Pages
+1. Push your code to a GitHub repository.
+2. Go to **Settings → Pages**.
+3. Set the **Source** to your `main` branch and `/root` folder.
+4. Your site will be live at `https://[username].github.io/NatesSpace/`.
 
-Then go to **Settings → Pages → Source: main branch** and your site will be live!
+## 📁 Project Documentation
 
-## 📁 Structure
+Detailed information is available in the `DOCS/` directory:
+- 📊 **[Summary](./DOCS/SUMMARY.md)**: High-level status and project goals.
+- 📜 **[Changelog](./DOCS/CHANGELOG.md)**: Detailed version history.
+- 🏗️ **[Architecture](./DOCS/ARCHITECTURE.md)**: Design system, layout logic, and components.
+- 📋 **[SBOM](./DOCS/SBOM.md)**: Assets and security audit.
+- 📓 **[Scratchpad](./DOCS/SCRATCHPAD.md)**: Active development notes and history.
 
-```
-NatesSpace/
-├── index.html          # Main page
-├── styles.css          # All styles
-├── script.js           # Theme & layout toggle
-├── .nojekyll           # For GitHub Pages
-├── assets/             # Images & videos
-└── DOCS/               # Documentation
-    ├── SUMMARY.md      # Project overview
-    ├── CHANGELOG.md    # Version history
-    ├── ARCHITECTURE.md # Technical docs
-    ├── SBOM.md         # Dependencies
-    └── SCRATCHPAD.md   # Dev notes
-```
+## 🛠️ Customization
 
-## 🎨 Customization
-
-### Colors
-Edit the CSS variables in `styles.css`:
+Customize the look and feel by editing the CSS variables in `styles.css`:
 ```css
 :root {
-  --accent-color: #00d4aa;      /* Main accent */
-  --accent-secondary: #00a8cc;  /* Secondary */
-  --accent-tertiary: #7b61ff;   /* Tertiary */
+  --accent-color: #00d4aa;      /* Main Brand Teal */
+  --accent-secondary: #00a8cc;  /* Deep Cyan */
+  --accent-tertiary: #7b61ff;   /* Digital Purple */
 }
 ```
 
-### Content
-Edit `index.html` to update:
-- Profile info & bio
-- Gallery images
-- Feed posts
-- Creative Circle friends
-
 ---
-
 Made with 💜 in the studio

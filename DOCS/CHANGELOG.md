@@ -2,48 +2,42 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.0] - 2026-01-14
+
+### Added
+- **Animated Brand Logo**: Added a gradient "shine" animation to the "NATE'S SPACE" logo in the navigation bar.
+- **Mobile UI Refinements**:
+  - Reduced size of "Creative Circle" bubbles and "Studio Gallery" thumbnails on mobile for better space utilization.
+  - Adjusted `object-position` for post preview images to highlight the top-center (artist/focus area) on portrait screens.
+  - Implemented automatic layout adjustments for the image lightbox on mobile (stacked view).
+- **Content**:
+  - Added new EP track: **"Dark Spaces"** (WAV) to all music players.
+
+### Fixed
+- **Mobile Video Player**: Centered the video play button overlay across all mobile aspect ratios.
+- **Image Lightbox**: Adjusted the details/comments section to be a scrollable "bottom sheet" on mobile, preventing it from pushing the main image off-screen.
+- **Asset Caching**: Incremented asset versions to `v100` to force cache refreshes on live deployments.
+
+---
+
 ## [1.0.0] - 2026-01-12
 
 ### Added
-- Initial release of Nate's Space - a pure HTML/CSS/JS personal portfolio site
-- **Profile Card** with avatar image, status indicator, bio, and action buttons
-- **Studio Gallery** with 4 images in a 2x2 grid
-- **Creative Circle** friends section with 6 connections (Deez Nuts, Ryan, Nick the Painter, Jay, Sam, Jordan)
-- **Post Composer** for sharing updates
-- **Feed Posts** including:
-  - "Off to the Engineer!" - track sent for mixing/mastering
-  - "Recording Session" - video post with studio recording
-  - "Studio Vibes Today" - photo post
-  - "Late Night Session" - text update
-  - "Behind the Scenes" - photo post
-- **Theme Toggle** - Dark/Light mode with localStorage persistence
-- **Layout Toggle** - Left sidebar, Right sidebar, Focus mode (desktop only)
-- **Glassmorphism Design** with animated gradient background
-- **Mobile Responsive** design with simplified single-column layout
-- Cache-busting version parameters for CSS/JS files
-- Added Spotify and Apple Music icons to top nav (desktop & mobile)
-- Integrated Apple Music Player toggle with "Fall On Me" embed
-- Updated Apple Music icon to "Beamed Note" style
-- Added Apple Music toggle to Mobile Player expanded view
-- Added "Purple Hearts" to Apple Music embeds
-- Fixed mobile scrolling issue in Apple Music modal
+- Initial release of Nate's Space - a pure HTML/CSS/JS personal portfolio site.
+- **Profile Card** with avatar image, status indicator, bio, and action buttons.
+- **Studio Gallery** with 4 images in a 2x2 grid.
+- **Creative Circle** friends section with 6 connections.
+- **Post Composer** (UI only) for sharing updates.
+- **Feed Posts** (Video, Photo, Update types) with dynamic glassmorphism styling.
+- **Theme Toggle** - Dark/Light mode with localStorage persistence.
+- **Layout Toggle** - Left sidebar, Right sidebar, Focus mode (desktop only).
 - **Image Lightbox (Facebook-style)**:
-  - Click any image in posts or gallery to open full-screen view
-  - Split view on desktop: Large image on left, details/comments on right
-  - Mobile view: Stacked layout for easy viewing
-  - Keyboard navigation (Left/Right arrows) and Escape to close
-  - Displays post metadata (caption, timestamp, likes, comments) dynamically
+  - Two-column desktop layout (Image Left / Details Right).
+  - Keyboard navigation and dynamic metadata injection.
+- **Apple Music Integration**: Embedded tracks via a dedicated modal player.
 
 ### Technical
-- Pure HTML5, CSS3, JavaScript (no frameworks, no build step)
-- Google Fonts: Outfit & Space Mono
-- CSS custom properties for theming
-- SVG icons inline
-- localStorage for theme and layout persistence
-
-### Mobile Optimizations
-- Layout toggle hidden on mobile (≤900px)
-- Single-column forced layout
-- Dynamic viewport height (100dvh)
-- Overscroll behavior disabled
-- Extended background to prevent gap on scroll
+- Pure HTML5, CSS3, JavaScript (no frameworks).
+- Google Fonts: Outfit & Space Mono.
+- CSS custom properties for theming.
+- SVG icons inline.

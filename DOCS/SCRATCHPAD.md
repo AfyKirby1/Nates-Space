@@ -1,54 +1,42 @@
 # Nate's Space - Scratchpad
 
-## Current Session: 2026-01-12
+## Current Session: 2026-01-14 (Refinements & "Wow" Factor)
+
+### Todo List 📝
+### Completed Tasks ✅
+- [x] **Organize Tools**: Moved `convert.js` and `convert.mjs` to `tools/`.
+- [x] **Hero Redesign**:
+  - [x] Make hero image bigger and integrated into background (immersive).
+  - [x] Remove box constraints for a cleaner look.
+- [x] **Visual Polish**:
+  - [x] **Particle Background**: Add canvas-based particle system ("Space" theme).
+  - [x] **Scroll Reveal**: Add fade-in animation for scroll virtualization effect.
+- [x] **Mobile QoL**:
+  - [x] **Swipe Gestures**: Add touch support (left/right swipe) for the Lightbox.
+- [x] **Data Architecture**:
+  - [x] **Post Data**: Moved hardcoded HTML posts to `assets/data.js`.
+  - [x] **Dynamic Rendering**: Implemented JS logic to render posts from data.
 
 ### Completed Tasks ✅
-- [x] Created NatesSpace as standalone HTML/CSS/JS project (no React)
-- [x] Built profile card with actual photo
-- [x] Created gallery panel with 4 studio images
-- [x] Added video post with recording session
-- [x] Implemented theme toggle (dark/light)
-- [x] Implemented layout toggle (left/right/focus) for desktop
-- [x] Added responsive mobile design
-- [x] Fixed mobile background scrolling issue (extended bg, removed scale animation)
-- [x] Hidden layout toggle on mobile (not useful)
-- [x] Added cache-busting version params (?v=3)
-- [x] Updated Creative Circle with new friends: Deez Nuts, Ryan, Nick the Painter
-- [x] Added new post "Off to the Engineer!"
-- [x] Converted HEIC images to JPG using heic-convert
-- [x] Added Spotify and Apple Music icons to top nav (desktop & mobile)
-- [x] Added Apple Music toggle in music player with "Fall On Me" embed
-- [x] Updated sidebar/focus player icon to "Beamed Note"
-- [x] Added Apple Music toggle to Mobile Player expanded view
-- [x] Added "Purple Hearts", "See Me Fall", "60 Second Relay", "Harsh Feelings" to Apple Music modal
-- [x] Fixed Apple Music modal scrolling on mobile (overflow-y: auto)
-- [x] Bumped asset cache version to v11
-- [x] Implemented Facebook-style image modal/lightbox
-  - [x] Two-column desktop layout (Image Left / Details Right)
-  - [x] Click logic for all post and gallery images
-  - [x] Keyboard navigation (Arrows + Esc)
-  - [x] Responsive mobile layout
-  - [x] Dynamic data population (Title, Quote, Stats)
+- [x] **Minimized UI Elements**: Made creative circle bubbles and studio gallery thumbnails smaller on mobile for a cleaner look.
+- [x] **Visual Polish**: Implemented a smooth color wave/shine animation for the "NATE'S SPACE" logo.
+- [x] **Video UI Fixes**: 
+  - [x] Centered the video play button overlay on mobile devices.
+  - [x] Fixed minimum container heights for videos on small screens.
+- [x] **Image Modal Optimization**:
+  - [x] Optimized the Facebook-style lightbox for mobile (stacked layout).
+  - [x] Capped details section height on mobile to maximize image viewability.
+  - [x] Hidden non-essential elements (labels/comments) on mobile modal view.
+- [x] **Post Preview Enhancements**: Adjusted `object-position` to `center 35%` on mobile to show the best parts of tracks/photos.
+- [x] **Content Update**: Added "Dark Spaces" (WAV) to the EP player (Sidebar, Focus, and Mobile).
+- [x] **Cache Control**: Bumped asset versions to `v=100` to ensure mobile refreshes correctly.
 
-### Known Issues
-- None currently reported
-
-### Future Ideas 💡
-- [ ] Add more posts/content
-- [ ] Music player integration?
-- [ ] Contact form (would need backend)
-- [ ] More gallery images
-- [ ] Link to Jay's Joints page
+### Immediate Tasks 🛠️
+- [ ] Implement Hero Redesign.
+- [ ] Add Particle Background logic.
+- [ ] Implement Scroll Reveal.
 
 ---
 
 ## Session History
-
-### 2026-01-12 (Initial Build)
-Started from JaysJoints React project, converted to pure HTML/CSS/JS for simplicity and easy GitHub Pages deployment without Actions.
-
-Key decisions:
-- Pure HTML over React = no build step
-- Glassmorphism design with teal/cyan accent
-- Mobile-first responsive approach
-- localStorage for preferences
+(Previous history compacted)

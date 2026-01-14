@@ -1,38 +1,45 @@
 # Nate's Space - Security Bill of Materials (SBOM)
 
 ## Overview
-This project uses **zero npm dependencies**. It's pure HTML/CSS/JS.
+This project is built using a **zero npm dependency** philosophy for the production site. It is a static pure HTML/CSS/JS application.
 
-## External Resources
+## External Resources (Trusted CDNs)
 
-| Resource | Type | Source | CDN | Last Verified |
-|----------|------|--------|-----|---------------|
-| Outfit Font | Font | Google Fonts | fonts.googleapis.com | 2026-01-12 |
-| Space Mono Font | Font | Google Fonts | fonts.googleapis.com | 2026-01-12 |
+| Resource | Type | Provider | Domain | Last Verified |
+|----------|------|----------|--------|---------------|
+| Outfit Font | Typography | Google Fonts | fonts.googleapis.com | 2026-01-14 |
+| Space Mono Font | Typography | Google Fonts | fonts.googleapis.com | 2026-01-14 |
 
-## CDN Integrity
-Google Fonts are loaded via their official CDN and are considered trusted.
+## Local Media Assets
 
-## Local Assets
+### Images
+| File | Type | Purpose |
+|------|------|---------|
+| `assets/IMG_20260112_193737.jpg` | JPG | Primary Avatar / Profile Image |
+| `assets/IMG_20260112_194122.jpg` | JPG | Gallery Image #1 / Video Poster |
+| `assets/IMG_20260112_194124.jpg` | JPG | Gallery Image #2 / Hero Background |
+| `assets/IMG_20260112_194126.jpg` | JPG | Gallery Image #3 |
 
-| File | Type | Size | Notes |
-|------|------|------|-------|
-| `assets/IMG_20260112_193737.jpg` | Image | - | Profile/gallery photo |
-| `assets/IMG_20260112_194122.jpg` | Image | - | Studio shot 1 |
-| `assets/IMG_20260112_194124.jpg` | Image | - | Studio shot 2 |
-| `assets/IMG_20260112_194126.jpg` | Image | - | Studio shot 3 |
-| `assets/VID_20260112_193751.mp4` | Video | - | Recording session |
+### Video
+| File | Type | Purpose |
+|------|------|---------|
+| `assets/VID_20260112_193751.mp4` | MP4 | Studio Recording Feed Post |
 
-## Development Dependencies
-None. This is a static site with no build process.
+### Audio (The EP)
+| File | Type | Track Name |
+|------|------|------------|
+| `assets/music/Akward Moments Natee V2 (M).mp3` | MP3 | Awkward Moments |
+| `assets/music/Natee 730 PM V1 (M).m4a` | M4A | 7:30 PM |
+| `assets/music/Dark Spaces Natee  V2.m4a` | M4A | Dark Spaces |
 
-## Security Notes
-- No JavaScript frameworks = minimal attack surface
-- No npm packages = no supply chain vulnerabilities  
-- All scripts are first-party inline
-- localStorage used for preferences (non-sensitive)
-- No cookies or external tracking
-- No user input processed server-side (static site)
+## Development Tools
+- `convert.js`: Uses `heic-convert` (dev-only) to transcode HEIC images to JPG for browser compatibility. Not deployed to production.
+
+## Security Audit
+- **Attack Surface**: Extremely minimal. No server-side processing, no database, no active sessions.
+- **Privacy**: No external trackers (Google Analytics, etc.) are implemented.
+- **Data Persistence**: `localStorage` is used exclusively for theme and layout preferences.
+- **Dependencies**: 0 production dependencies.
 
 ## Audit Status
-✅ **Clean** - No known vulnerabilities (2026-01-12)
+✅ **Clean** - No vulnerabilities found (2026-01-14)
