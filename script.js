@@ -677,16 +677,7 @@ if (modalDownloadBtn) {
         document.body.removeChild(link);
 
         // Visual feedback
-        const originalText = modalDownloadBtn.querySelector('.action-label').textContent;
-        const originalIcon = modalDownloadBtn.querySelector('.action-icon').textContent;
-
-        modalDownloadBtn.querySelector('.action-label').textContent = 'Downloaded!';
-        modalDownloadBtn.querySelector('.action-icon').textContent = '✅';
-
-        setTimeout(() => {
-            modalDownloadBtn.querySelector('.action-label').textContent = originalText;
-            modalDownloadBtn.querySelector('.action-icon').textContent = originalIcon;
-        }, 2000);
+        showToast('Image downloaded successfully!', '⬇️');
     });
 }
 
@@ -808,3 +799,48 @@ if (videoModal) {
 }
 
 console.log("📸 Image & 🎥 Video lightboxes initialized!");
+
+// ===== TOAST NOTIFICATION LOGIC =====
+const toastContainer = document.getElementById('toastContainer');
+
+function showToast(message, icon = '✨', duration = 3000) {
+    if (!toastContainer) return;
+
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.innerHTML = `
+        <span class="toast-icon">${icon}</span>
+        <span class="toast-message">${message}</span>
+        <div class="toast-progress" style="animation-duration: ${duration}ms"></div>
+    `;
+
+    toastContainer.appendChild(toast);
+
+    // Remove after duration
+    setTimeout(() => {
+        toast.classList.add('hiding');
+        toast.addEventListener('animationend', () => {
+            if (toast.parentElement) {
+                toast.parentElement.removeChild(toast);
+            }
+        });
+    }, duration);
+}
+
+// Hook up Share Buttons (globally)
+document.addEventListener('click', (e) => {
+    // Handle Save Button (Generic)
+    if (e.target.closest('.action-btn') && e.target.closest('.action-btn').textContent.includes('Save')) {
+        const btn = e.target.closest('.action-btn');
+        // Simple visual feedback + Toast
+        showToast('Saved to your collection!', '🔖');
+    }
+
+    // Handle Share Button (Generic)
+    if (e.target.closest('.action-btn') && e.target.closest('.action-btn').textContent.includes('Share')) {
+        const btn = e.target.closest('.action-btn');
+        navigator.clipboard.writeText(window.location.href).then(() => {
+            showToast('Link copied to clipboard!', '🔗');
+        });
+    }
+});
